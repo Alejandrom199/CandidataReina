@@ -41,30 +41,25 @@
             pbxMayor = new PictureBox();
             btnEliminarTodo = new Button();
             groupBox3 = new GroupBox();
-            btnFoto5 = new Button();
             btnFoto4 = new Button();
             btnFoto3 = new Button();
             btnFoto2 = new Button();
-            pbxFoto5 = new PictureBox();
             pbxFoto4 = new PictureBox();
             btnFoto1 = new Button();
             pbxFoto3 = new PictureBox();
             pbxFoto2 = new PictureBox();
             pbxFoto1 = new PictureBox();
             btnGuardar = new Button();
-            dgvEjemplo = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvCandidatasInfo).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbxMayor).BeginInit();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxFoto5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEjemplo).BeginInit();
             SuspendLayout();
             // 
             // dgvCandidatasInfo
@@ -94,7 +89,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(527, 536);
+            btnCancelar.Location = new Point(452, 537);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(112, 34);
             btnCancelar.TabIndex = 3;
@@ -129,7 +124,6 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(dgvEjemplo);
             groupBox4.Controls.Add(tbxDescripcion);
             groupBox4.Controls.Add(tbxTitulo);
             groupBox4.Controls.Add(label3);
@@ -180,14 +174,14 @@
             pbxMayor.BorderStyle = BorderStyle.Fixed3D;
             pbxMayor.Location = new Point(15, 30);
             pbxMayor.Name = "pbxMayor";
-            pbxMayor.Size = new Size(292, 75);
+            pbxMayor.Size = new Size(292, 360);
             pbxMayor.SizeMode = PictureBoxSizeMode.StretchImage;
             pbxMayor.TabIndex = 1;
             pbxMayor.TabStop = false;
             // 
             // btnEliminarTodo
             // 
-            btnEliminarTodo.Location = new Point(510, 488);
+            btnEliminarTodo.Location = new Point(452, 492);
             btnEliminarTodo.Name = "btnEliminarTodo";
             btnEliminarTodo.Size = new Size(141, 34);
             btnEliminarTodo.TabIndex = 9;
@@ -196,11 +190,9 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnFoto5);
             groupBox3.Controls.Add(btnFoto4);
             groupBox3.Controls.Add(btnFoto3);
             groupBox3.Controls.Add(btnFoto2);
-            groupBox3.Controls.Add(pbxFoto5);
             groupBox3.Controls.Add(pbxFoto4);
             groupBox3.Controls.Add(btnFoto1);
             groupBox3.Controls.Add(pbxFoto3);
@@ -208,23 +200,13 @@
             groupBox3.Controls.Add(pbxFoto1);
             groupBox3.Location = new Point(18, 433);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(481, 143);
+            groupBox3.Size = new Size(337, 143);
             groupBox3.TabIndex = 5;
             groupBox3.TabStop = false;
             // 
-            // btnFoto5
-            // 
-            btnFoto5.Location = new Point(386, 89);
-            btnFoto5.Name = "btnFoto5";
-            btnFoto5.Size = new Size(40, 40);
-            btnFoto5.TabIndex = 10;
-            btnFoto5.Text = "+";
-            btnFoto5.UseVisualStyleBackColor = true;
-            btnFoto5.Click += btnFoto5_Click;
-            // 
             // btnFoto4
             // 
-            btnFoto4.Location = new Point(304, 89);
+            btnFoto4.Location = new Point(270, 89);
             btnFoto4.Name = "btnFoto4";
             btnFoto4.Size = new Size(40, 40);
             btnFoto4.TabIndex = 9;
@@ -234,7 +216,7 @@
             // 
             // btnFoto3
             // 
-            btnFoto3.Location = new Point(222, 89);
+            btnFoto3.Location = new Point(188, 89);
             btnFoto3.Name = "btnFoto3";
             btnFoto3.Size = new Size(40, 40);
             btnFoto3.TabIndex = 8;
@@ -244,7 +226,7 @@
             // 
             // btnFoto2
             // 
-            btnFoto2.Location = new Point(144, 89);
+            btnFoto2.Location = new Point(110, 89);
             btnFoto2.Name = "btnFoto2";
             btnFoto2.Size = new Size(40, 40);
             btnFoto2.TabIndex = 7;
@@ -252,21 +234,10 @@
             btnFoto2.UseVisualStyleBackColor = true;
             btnFoto2.Click += btnFoto2_Click;
             // 
-            // pbxFoto5
-            // 
-            pbxFoto5.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto5.Location = new Point(376, 22);
-            pbxFoto5.Name = "pbxFoto5";
-            pbxFoto5.Size = new Size(60, 58);
-            pbxFoto5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbxFoto5.TabIndex = 4;
-            pbxFoto5.TabStop = false;
-            pbxFoto5.Click += pbxFoto5_Click;
-            // 
             // pbxFoto4
             // 
             pbxFoto4.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto4.Location = new Point(294, 22);
+            pbxFoto4.Location = new Point(260, 22);
             pbxFoto4.Name = "pbxFoto4";
             pbxFoto4.Size = new Size(60, 58);
             pbxFoto4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -276,7 +247,7 @@
             // 
             // btnFoto1
             // 
-            btnFoto1.Location = new Point(58, 89);
+            btnFoto1.Location = new Point(24, 89);
             btnFoto1.Name = "btnFoto1";
             btnFoto1.Size = new Size(40, 40);
             btnFoto1.TabIndex = 6;
@@ -287,7 +258,7 @@
             // pbxFoto3
             // 
             pbxFoto3.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto3.Location = new Point(211, 22);
+            pbxFoto3.Location = new Point(177, 22);
             pbxFoto3.Name = "pbxFoto3";
             pbxFoto3.Size = new Size(60, 58);
             pbxFoto3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -298,7 +269,7 @@
             // pbxFoto2
             // 
             pbxFoto2.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto2.Location = new Point(133, 22);
+            pbxFoto2.Location = new Point(99, 22);
             pbxFoto2.Name = "pbxFoto2";
             pbxFoto2.Size = new Size(60, 58);
             pbxFoto2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -309,7 +280,7 @@
             // pbxFoto1
             // 
             pbxFoto1.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto1.Location = new Point(47, 22);
+            pbxFoto1.Location = new Point(13, 22);
             pbxFoto1.Name = "pbxFoto1";
             pbxFoto1.Size = new Size(60, 58);
             pbxFoto1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -319,26 +290,13 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(527, 442);
+            btnGuardar.Location = new Point(452, 449);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(112, 34);
             btnGuardar.TabIndex = 8;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
-            // 
-            // dgvEjemplo
-            // 
-            dgvEjemplo.AllowUserToAddRows = false;
-            dgvEjemplo.AllowUserToDeleteRows = false;
-            dgvEjemplo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEjemplo.Location = new Point(33, 155);
-            dgvEjemplo.Name = "dgvEjemplo";
-            dgvEjemplo.ReadOnly = true;
-            dgvEjemplo.RowHeadersWidth = 62;
-            dgvEjemplo.RowTemplate.Height = 33;
-            dgvEjemplo.Size = new Size(268, 216);
-            dgvEjemplo.TabIndex = 6;
             // 
             // frmGaleriaFotos
             // 
@@ -358,12 +316,10 @@
             groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbxMayor).EndInit();
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbxFoto5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxFoto1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEjemplo).EndInit();
             ResumeLayout(false);
         }
 
@@ -376,14 +332,12 @@
         private GroupBox groupBox2;
         private PictureBox pbxMayor;
         private GroupBox groupBox3;
-        private PictureBox pbxFoto5;
         private PictureBox pbxFoto4;
         private PictureBox pbxFoto3;
         private PictureBox pbxFoto2;
         private PictureBox pbxFoto1;
         private Button btnGuardar;
         private Button btnFoto1;
-        private Button btnFoto5;
         private Button btnFoto4;
         private Button btnFoto3;
         private Button btnFoto2;
@@ -393,6 +347,5 @@
         private TextBox tbxTitulo;
         private Label label3;
         private Label label2;
-        private DataGridView dgvEjemplo;
     }
 }

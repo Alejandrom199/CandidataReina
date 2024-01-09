@@ -12,6 +12,7 @@ namespace CapaNegocio.Entidades
     public class CN_Candidatas
     {
         private ManageSQL obj_capa_datos = new ManageSQL();
+        private ConnectionDB obj_conn = new ConnectionDB();
 
         private int id;
         private string nombre, apellidos;

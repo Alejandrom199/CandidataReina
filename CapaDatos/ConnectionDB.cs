@@ -44,5 +44,10 @@ namespace CapaDatos
             }
 
         }
+
+        public SqlConnection Cadena_Conexion
+        {
+            get { return cadena_conexion; }
+        }
     }
 }
