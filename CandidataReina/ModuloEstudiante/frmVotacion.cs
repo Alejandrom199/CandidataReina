@@ -16,5 +16,7 @@ namespace CapaVisual.ModuloEstudiante
         {
             InitializeComponent();
         }
+
+
     }
 }
