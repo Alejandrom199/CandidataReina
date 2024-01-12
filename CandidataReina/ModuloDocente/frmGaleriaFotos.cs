@@ -103,7 +103,7 @@ namespace CapaVisual.ModuloDocente
             dgvCandidatasInfo.AllowUserToResizeColumns = false;
             dgvCandidatasInfo.AllowUserToResizeRows = false;
             dgvCandidatasInfo.AllowUserToOrderColumns = false;
-            dgvCandidatasInfo.ColumnHeadersVisible = true;
+            dgvCandidatasInfo.ColumnHeadersVisible = false;
             dgvCandidatasInfo.RowHeadersVisible = false;
             dgvCandidatasInfo.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvCandidatasInfo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
