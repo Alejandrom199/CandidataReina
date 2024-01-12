@@ -108,6 +108,32 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        public bool ModificarImagenes(CN_Fotos fotos)
+        {
+
+            try
+            {
+                string nombreStoredProcedure = "SP_MODIFICAR_FOTOS";
+
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                new SqlParameter("@titulo", fotos.Titulo),
+                new SqlParameter("@descripcion", fotos.Descripcion),
+                new SqlParameter("@imagen1", fotos.Imagen1),
+                new SqlParameter("@imagen2", fotos.Imagen2),
+                new SqlParameter("@imagen3", fotos.Imagen3),
+                new SqlParameter("@imagen4", fotos.Imagen4),
+                new SqlParameter("@id_candidata", fotos.Id_Candidata)
+                };
+
+                return obj_capa_datos.EjecutarSPSql(nombreStoredProcedure, parametros);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al modificar galeria: " + e.Message);
+            }
+
+        }
 
         public List<CN_Fotos> ObtenerFotosPorCandidata(int id_candidata)
         {
@@ -145,6 +171,25 @@ namespace CapaNegocio.Entidades
             return fotos;
         }
 
+        public bool EliminarFotos(CN_Fotos fotos)
+        {
 
+            try
+            {
+                string nombreStoredProcedure = "SP_ELIMINAR_GALERIA";
+
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                    new SqlParameter("@id_candidata", fotos.id_Candidata),
+                };
+
+                return obj_capa_datos.EjecutarSPSql(nombreStoredProcedure, parametros);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al eliminar fotos: " + e.Message);
+            }
+
+        }
     }
 }

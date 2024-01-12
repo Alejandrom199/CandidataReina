@@ -28,263 +28,297 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
+            pbxFotoCandidata = new PictureBox();
+            tbxId = new TextBox();
             label1 = new Label();
-            button1 = new Button();
-            tbxHabilidades = new TextBox();
+            btnVotar = new Button();
+            tbxPasatiempos = new TextBox();
             label2 = new Label();
             label3 = new Label();
             tbxNombre = new TextBox();
-            textBox2 = new TextBox();
+            tbxApellidos = new TextBox();
             label12 = new Label();
-            textBox3 = new TextBox();
+            tbxCarrera = new TextBox();
             label4 = new Label();
-            textBox4 = new TextBox();
+            tbxEdad = new TextBox();
             label7 = new Label();
             label8 = new Label();
             label10 = new Label();
             label9 = new Label();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tbxAspiraciones = new TextBox();
+            tbxHabilidades = new TextBox();
+            tbxIntereses = new TextBox();
+            btnBuscar = new Button();
+            btnCancelar = new Button();
+            ((System.ComponentModel.ISupportInitialize)pbxFotoCandidata).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pbxFotoCandidata
             // 
-            pictureBox1.Location = new Point(12, 62);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(297, 426);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pbxFotoCandidata.BorderStyle = BorderStyle.Fixed3D;
+            pbxFotoCandidata.Location = new Point(28, 24);
+            pbxFotoCandidata.Margin = new Padding(4);
+            pbxFotoCandidata.Name = "pbxFotoCandidata";
+            pbxFotoCandidata.Size = new Size(357, 446);
+            pbxFotoCandidata.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxFotoCandidata.TabIndex = 0;
+            pbxFotoCandidata.TabStop = false;
             // 
-            // textBox1
+            // tbxId
             // 
-            textBox1.Location = new Point(585, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(79, 27);
-            textBox1.TabIndex = 1;
+            tbxId.Location = new Point(718, 24);
+            tbxId.Margin = new Padding(4);
+            tbxId.Name = "tbxId";
+            tbxId.Size = new Size(98, 31);
+            tbxId.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(325, 19);
+            label1.Location = new Point(430, 24);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(235, 20);
+            label1.Size = new Size(280, 25);
             label1.TabIndex = 2;
             label1.Text = "Ingrese el numero de la candidata";
             // 
-            // button1
+            // btnVotar
             // 
-            button1.Location = new Point(93, 499);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 39);
-            button1.TabIndex = 3;
-            button1.Text = "votar";
-            button1.UseVisualStyleBackColor = true;
+            btnVotar.Location = new Point(105, 487);
+            btnVotar.Margin = new Padding(4);
+            btnVotar.Name = "btnVotar";
+            btnVotar.Size = new Size(200, 60);
+            btnVotar.TabIndex = 3;
+            btnVotar.Text = "votar";
+            btnVotar.UseVisualStyleBackColor = true;
             // 
-            // tbxHabilidades
+            // tbxPasatiempos
             // 
-            tbxHabilidades.Location = new Point(325, 180);
-            tbxHabilidades.Margin = new Padding(2);
-            tbxHabilidades.Multiline = true;
-            tbxHabilidades.Name = "tbxHabilidades";
-            tbxHabilidades.Size = new Size(235, 138);
-            tbxHabilidades.TabIndex = 20;
+            tbxPasatiempos.Location = new Point(430, 230);
+            tbxPasatiempos.Margin = new Padding(2);
+            tbxPasatiempos.Multiline = true;
+            tbxPasatiempos.Name = "tbxPasatiempos";
+            tbxPasatiempos.Size = new Size(293, 120);
+            tbxPasatiempos.TabIndex = 20;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(325, 65);
+            label2.Location = new Point(430, 81);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(64, 20);
+            label2.Size = new Size(79, 25);
             label2.TabIndex = 21;
             label2.Text = "nombre:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(325, 100);
+            label3.Location = new Point(430, 125);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(75, 20);
+            label3.Size = new Size(90, 25);
             label3.TabIndex = 22;
             label3.Text = "Apellidos:";
             // 
             // tbxNombre
             // 
-            tbxNombre.Location = new Point(404, 62);
+            tbxNombre.Location = new Point(529, 78);
             tbxNombre.Margin = new Padding(2);
             tbxNombre.Name = "tbxNombre";
-            tbxNombre.Size = new Size(170, 27);
+            tbxNombre.Size = new Size(212, 31);
             tbxNombre.TabIndex = 23;
             // 
-            // textBox2
+            // tbxApellidos
             // 
-            textBox2.Location = new Point(404, 97);
-            textBox2.Margin = new Padding(2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(170, 27);
-            textBox2.TabIndex = 24;
+            tbxApellidos.Location = new Point(529, 121);
+            tbxApellidos.Margin = new Padding(2);
+            tbxApellidos.Name = "tbxApellidos";
+            tbxApellidos.Size = new Size(212, 31);
+            tbxApellidos.TabIndex = 24;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(654, 65);
+            label12.Location = new Point(818, 81);
             label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
-            label12.Size = new Size(60, 20);
+            label12.Size = new Size(72, 25);
             label12.TabIndex = 25;
             label12.Text = "Carrera:";
             // 
-            // textBox3
+            // tbxCarrera
             // 
-            textBox3.Location = new Point(718, 62);
-            textBox3.Margin = new Padding(2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(210, 27);
-            textBox3.TabIndex = 26;
+            tbxCarrera.Location = new Point(898, 78);
+            tbxCarrera.Margin = new Padding(2);
+            tbxCarrera.Name = "tbxCarrera";
+            tbxCarrera.Size = new Size(262, 31);
+            tbxCarrera.TabIndex = 26;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(654, 100);
+            label4.Location = new Point(818, 125);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(46, 20);
+            label4.Size = new Size(56, 25);
             label4.TabIndex = 27;
             label4.Text = "Edad:";
             // 
-            // textBox4
+            // tbxEdad
             // 
-            textBox4.Location = new Point(718, 100);
-            textBox4.Margin = new Padding(2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(70, 27);
-            textBox4.TabIndex = 28;
+            tbxEdad.Location = new Point(898, 125);
+            tbxEdad.Margin = new Padding(2);
+            tbxEdad.Name = "tbxEdad";
+            tbxEdad.Size = new Size(86, 31);
+            tbxEdad.TabIndex = 28;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(394, 145);
+            label7.Location = new Point(516, 186);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(95, 20);
+            label7.Size = new Size(116, 25);
             label7.TabIndex = 29;
             label7.Text = "Pasatiempos:";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(776, 145);
+            label8.Location = new Point(939, 186);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(92, 20);
+            label8.Size = new Size(109, 25);
             label8.TabIndex = 30;
             label8.Text = "Habilidades:";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(394, 338);
+            label10.Location = new Point(516, 381);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(96, 20);
+            label10.Size = new Size(116, 25);
             label10.TabIndex = 31;
             label10.Text = "Aspiraciones:";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(776, 338);
+            label9.Location = new Point(939, 381);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(70, 20);
+            label9.Size = new Size(86, 25);
             label9.TabIndex = 32;
             label9.Text = "Intereses:";
             // 
-            // textBox5
+            // tbxAspiraciones
             // 
-            textBox5.Location = new Point(325, 374);
-            textBox5.Margin = new Padding(2);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(235, 138);
-            textBox5.TabIndex = 33;
+            tbxAspiraciones.Location = new Point(430, 427);
+            tbxAspiraciones.Margin = new Padding(2);
+            tbxAspiraciones.Multiline = true;
+            tbxAspiraciones.Name = "tbxAspiraciones";
+            tbxAspiraciones.Size = new Size(293, 120);
+            tbxAspiraciones.TabIndex = 33;
             // 
-            // textBox6
+            // tbxHabilidades
             // 
-            textBox6.Location = new Point(710, 180);
-            textBox6.Margin = new Padding(2);
-            textBox6.Multiline = true;
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(235, 138);
-            textBox6.TabIndex = 34;
+            tbxHabilidades.Location = new Point(857, 230);
+            tbxHabilidades.Margin = new Padding(2);
+            tbxHabilidades.Multiline = true;
+            tbxHabilidades.Name = "tbxHabilidades";
+            tbxHabilidades.Size = new Size(293, 120);
+            tbxHabilidades.TabIndex = 34;
             // 
-            // textBox7
+            // tbxIntereses
             // 
-            textBox7.Location = new Point(710, 374);
-            textBox7.Margin = new Padding(2);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(235, 138);
-            textBox7.TabIndex = 35;
+            tbxIntereses.Location = new Point(857, 427);
+            tbxIntereses.Margin = new Padding(2);
+            tbxIntereses.Multiline = true;
+            tbxIntereses.Name = "tbxIntereses";
+            tbxIntereses.Size = new Size(293, 120);
+            tbxIntereses.TabIndex = 35;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(914, 21);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(112, 34);
+            btnBuscar.TabIndex = 36;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(1048, 21);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(112, 34);
+            btnCancelar.TabIndex = 37;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // frmVotacion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(956, 550);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
+            ClientSize = new Size(1195, 564);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnBuscar);
+            Controls.Add(tbxIntereses);
+            Controls.Add(tbxHabilidades);
+            Controls.Add(tbxAspiraciones);
             Controls.Add(label9);
             Controls.Add(label10);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(textBox4);
+            Controls.Add(tbxEdad);
             Controls.Add(label4);
-            Controls.Add(textBox3);
+            Controls.Add(tbxCarrera);
             Controls.Add(label12);
-            Controls.Add(textBox2);
+            Controls.Add(tbxApellidos);
             Controls.Add(tbxNombre);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(tbxHabilidades);
-            Controls.Add(button1);
+            Controls.Add(tbxPasatiempos);
+            Controls.Add(btnVotar);
             Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(pictureBox1);
+            Controls.Add(tbxId);
+            Controls.Add(pbxFotoCandidata);
+            Margin = new Padding(4);
             Name = "frmVotacion";
             Text = "frmVotacion";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += frmVotacion_Load;
+            ((System.ComponentModel.ISupportInitialize)pbxFotoCandidata).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private TextBox textBox1;
+        private PictureBox pbxFotoCandidata;
+        private TextBox tbxId;
         private Label label1;
-        private Button button1;
-        private TextBox tbxHabilidades;
+        private Button btnVotar;
+        private TextBox tbxPasatiempos;
         private Label label2;
         private Label label3;
         private TextBox tbxNombre;
-        private TextBox textBox2;
+        private TextBox tbxApellidos;
         private Label label12;
-        private TextBox textBox3;
+        private TextBox tbxCarrera;
         private Label label4;
-        private TextBox textBox4;
+        private TextBox tbxEdad;
         private Label label7;
         private Label label8;
         private Label label10;
         private Label label9;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
+        private TextBox tbxAspiraciones;
+        private TextBox tbxHabilidades;
+        private TextBox tbxIntereses;
+        private Button btnBuscar;
+        private Button btnCancelar;
     }
 }

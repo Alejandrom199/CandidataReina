@@ -59,66 +59,79 @@ namespace CapaNegocio.Entidades
         }
         public int Id
         {
-            get { return id; } set { id = value; }
+            get { return id; }
+            set { id = value; }
         }
 
         public string Nombre
         {
-            get { return nombre; } set { nombre = value; }
+            get { return nombre; }
+            set { nombre = value; }
         }
 
         public string Apellidos
         {
-            get { return apellidos; } set { apellidos = value; }
+            get { return apellidos; }
+            set { apellidos = value; }
         }
 
         public int Edad
         {
-            get { return edad; } set { edad = value; }
+            get { return edad; }
+            set { edad = value; }
         }
 
         public string Telefono
         {
-            get { return telefono; } set { telefono = value; }
+            get { return telefono; }
+            set { telefono = value; }
         }
         public string Provincia
         {
-            get { return provincia; }  set { provincia = value; }
+            get { return provincia; }
+            set { provincia = value; }
         }
 
         public string Pasatiempos
         {
-            get { return pasatiempos; }  set { pasatiempos = value; }
+            get { return pasatiempos; }
+            set { pasatiempos = value; }
         }
 
         public string Habilidades
         {
-            get { return habilidades; } set { habilidades = value; }
+            get { return habilidades; }
+            set { habilidades = value; }
         }
 
         public string Intereses
         {
-            get { return intereses; } set { intereses = value; }
+            get { return intereses; }
+            set { intereses = value; }
         }
 
         public string Aspiraciones
         {
-            get { return aspiraciones; } set { aspiraciones = value; }
+            get { return aspiraciones; }
+            set { aspiraciones = value; }
         }
 
         public int Semestre
         {
-            get { return semestre; } set { semestre = value; }
+            get { return semestre; }
+            set { semestre = value; }
         }
 
         public int Id_Carrera
         {
-            get { return id_Carrera; } set { id_Carrera = value; }
+            get { return id_Carrera; }
+            set { id_Carrera = value; }
         }
 
         public byte[] ImagenByte
         {
-            get { return imagenBytes; } set { imagenBytes = value; }
+            get { return imagenBytes; }
+            set { imagenBytes = value; }
         }
 
         public DataTable GetListaCandidata()
@@ -230,6 +243,37 @@ namespace CapaNegocio.Entidades
             catch (Exception e)
             {
                 throw new Exception("Error al eliminar Candidata: " + e.Message);
+            }
+        }
+
+        public DataRow getCandidataById(CN_Candidatas candidata)
+        {
+            try
+            {
+                string nombreStoredProcedure = "SP_GET_CANDIDATA_BY_ID";
+
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+             new SqlParameter("@id", candidata.id)
+                };
+
+                DataTable dataTable = obj_capa_datos.EjecutarSPSelect(nombreStoredProcedure, parametros);
+
+                // Verificar si se obtuvieron resultados
+                if (dataTable.Rows.Count > 0)
+                {
+                    // Devolver la primera fila que contiene los datos de la candidata
+                    return dataTable.Rows[0];
+                }
+                else
+                {
+                    // No se encontraron resultados para el id proporcionado.
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener datos de la candidata por ID. " + ex.Message);
             }
         }
 

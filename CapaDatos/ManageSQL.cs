@@ -47,7 +47,7 @@ namespace CapaDatos
         }
 
 
-        public Usuario retornarUserObjecto(string username, string clave)
+        public CN_Usuario retornarUserObjecto(string username, string clave)
         {
             string sql = "SELECT * FROM tb_Usuarios WHERE username = @Username AND clave = @Clave ";
             try
@@ -65,7 +65,7 @@ namespace CapaDatos
 
                 if (reader.Read())
                 {
-                    Usuario user = new Usuario
+                    CN_Usuario user = new CN_Usuario
                     {
                         Nombres = reader["nombre"].ToString(),
                         Username = reader["username"].ToString(),
@@ -121,6 +121,53 @@ namespace CapaDatos
             var command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
+            command.Connection = conn.AbrirConexion();
+            SqlDataReader reader = command.ExecuteReader();
+            using (var tabla = new DataTable())
+            {
+                tabla.Load(reader);
+                reader.DisposeAsync();
+                conn.CerrarConexion();
+                return tabla;
+            }
+        }
+        //STORE PROCEDURES
+        public bool EjecutarSPSql(string storedProcedureName, SqlParameter[] parameters)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            command.Connection = conn.AbrirConexion();
+            var resultado = command.ExecuteNonQuery();
+            conn.CerrarConexion();
+
+            if (resultado > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public DataTable EjecutarSPSelect(string storedProcedureName, SqlParameter[] parameters)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
             command.Connection = conn.AbrirConexion();
             SqlDataReader reader = command.ExecuteReader();
             using (var tabla = new DataTable())

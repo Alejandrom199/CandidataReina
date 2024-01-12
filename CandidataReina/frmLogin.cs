@@ -29,7 +29,7 @@ namespace CandidataReina
             {
                 MessageBox.Show("Inicio de sesión exitoso de " + username);
 
-                Usuario user = objUsuario.retornarCredencialesUser(username, clave);
+                CN_Usuario user = objUsuario.retornarCredencialesUser(username, clave);
 
                 /*if (user != null)
                 {
@@ -65,7 +65,7 @@ namespace CandidataReina
         }
 
         private static string rolUser;
-        public void MandarUsuario(Usuario user)
+        public void MandarUsuario(CN_Usuario user)
         {
             frmOpciones frmOpciones = new frmOpciones();
             rolUser = MostrarRol(user);
@@ -77,7 +77,7 @@ namespace CandidataReina
 
         }
 
-        public string MostrarRol(Usuario user)
+        public string MostrarRol(CN_Usuario user)
         {
             if (Convert.ToInt32(user.PerfilUsuario) == 1) { return "Estudiante"; }
             else if (Convert.ToInt32(user.PerfilUsuario) == 2) { return "Gestor"; }

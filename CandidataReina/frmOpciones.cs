@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaVisual;
 using CapaVisual.ModuloDocente;
+using CapaVisual.ModuloEstudiante;
 
 namespace CapaVisual
 {
@@ -134,6 +135,12 @@ namespace CapaVisual
         {
             frmGaleriaFotos frmGaleriaFotos = new frmGaleriaFotos();
             frmGaleriaFotos.Show();
+        }
+
+        private void btnVotaciones_Click(object sender, EventArgs e)
+        {
+            frmVotacion frmVotaciones = new frmVotacion();
+            frmVotaciones.Show();
         }
     }
 }

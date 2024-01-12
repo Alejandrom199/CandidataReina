@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
-    public class Usuario
+    public class CN_Usuario
     {
         private string nombres;
         private string username;
@@ -16,7 +16,7 @@ namespace CapaNegocio
         private bool estado;
         private string perfilUsuario;
 
-        public Usuario()
+        public CN_Usuario()
         {
             nombres = string.Empty;
             username = string.Empty;
@@ -25,7 +25,7 @@ namespace CapaNegocio
             estado = false;
         }
 
-        public Usuario(string nombres, string username, string clave, string email, bool estado, string perfilUsuario)
+        public CN_Usuario(string nombres, string username, string clave, string email, bool estado, string perfilUsuario)
         {
             nombres = nombres;
             username = username;
@@ -69,7 +69,7 @@ namespace CapaNegocio
             get { return perfilUsuario; }
             set { perfilUsuario = value; }
         }
-        public List<Usuario> getListaUsuarios()
+        public List<CN_Usuario> getListaUsuarios()
         {
             try
             {

@@ -1,5 +1,6 @@
 using CapaVisual;
 using CapaVisual.ModuloDocente;
+using CapaVisual.ModuloEstudiante;
 
 namespace CandidataReina
 {

@@ -19,7 +19,7 @@ namespace CapaNegocio
             return manejoSql.ValidarCredenciales(username, clave);
         }
 
-        public Usuario retornarCredencialesUser(string username, string clave)
+        public CN_Usuario retornarCredencialesUser(string username, string clave)
         {
             return manejoSql.retornarUserObjecto(username, clave);
         }

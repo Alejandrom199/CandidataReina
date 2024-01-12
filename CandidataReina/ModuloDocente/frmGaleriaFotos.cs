@@ -15,8 +15,9 @@ namespace CapaVisual.ModuloDocente
 {
     public partial class frmGaleriaFotos : Form
     {
-        CN_Candidatas obj_capa_negocio = new CN_Candidatas();
-        CN_Fotos objGa_capa_negocio = new CN_Fotos();
+        CN_Candidatas obj_candidatas = new CN_Candidatas();
+        CN_Fotos obj_fotos = new CN_Fotos();
+        public bool isNuevo = true;
         public frmGaleriaFotos()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace CapaVisual.ModuloDocente
             {
                 EnableCampos(false);
                 dgvCandidatasInfo.AllowUserToAddRows = false;
-                dgvCandidatasInfo.DataSource = obj_capa_negocio.GetListaCandidata();
+                dgvCandidatasInfo.DataSource = obj_candidatas.GetListaCandidata();
 
             }
             catch (Exception ex)
@@ -45,7 +46,7 @@ namespace CapaVisual.ModuloDocente
 
             for (int i = 0; i < valor; i++)
             {
-                if (i != 0 &&  i != 1 && i != 12)
+                if (i != 0 && i != 1 && i != 12)
                 {
                     dgvCandidatasInfo.Columns[i].Visible = false;
 
@@ -66,7 +67,7 @@ namespace CapaVisual.ModuloDocente
 
         private void dgvCandidatasInfo_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            
+
             if (e.RowIndex >= 0 && e.ColumnIndex == dgvCandidatasInfo.Columns[12].Index)
             {
                 // Obtén la imagen original en formato byte[]
@@ -113,24 +114,26 @@ namespace CapaVisual.ModuloDocente
 
         private void btnFoto1_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Archivos de imagen|*.png";
-                openFileDialog.Title = "Seleccionar una imagen";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    // Obtener la ruta del archivo seleccionado
-                    string rutaImagen = openFileDialog.FileName;
+                    openFileDialog.Filter = "Archivos de imagen|*.png";
+                    openFileDialog.Title = "Seleccionar una imagen";
 
-                    // Mostrar la imagen en un control PictureBox u otro componente visual si lo deseas
-                    pbxFoto1.Image = Image.FromFile(rutaImagen);
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Obtener la ruta del archivo seleccionado
+                        string rutaImagen = openFileDialog.FileName;
+                        try
+                        {
+                            pbxFoto1.Image = Image.FromFile(rutaImagen);
+                        }
+                        catch (Exception ex) { MessageBox.Show("Imagen no válida, seleccione otra."); }
 
-                    // Guardar la ruta del archivo en una variable o en un campo para su posterior uso
-                    // Puedes usar esta ruta para cargar la imagen en la base de datos
-                    // Ejemplo: this.rutaImagenSeleccionada = rutaImagen;
+                        // Guardar la ruta del archivo en una variable o en un campo para su posterior uso
+                        // Puedes usar esta ruta para cargar la imagen en la base de datos
+                        // Ejemplo: this.rutaImagenSeleccionada = rutaImagen;
+                    }
                 }
-            }
         }
 
         private void btnFoto2_Click(object sender, EventArgs e)
@@ -144,7 +147,11 @@ namespace CapaVisual.ModuloDocente
                 {
                     string rutaImagen = openFileDialog.FileName;
 
-                    pbxFoto2.Image = Image.FromFile(rutaImagen);
+                    try
+                    {
+                        pbxFoto2.Image = Image.FromFile(rutaImagen);
+                    }
+                    catch (Exception ex) { MessageBox.Show("Imagen no válida, seleccione otra."); }
                 }
             }
         }
@@ -160,7 +167,11 @@ namespace CapaVisual.ModuloDocente
                 {
                     string rutaImagen = openFileDialog.FileName;
 
-                    pbxFoto3.Image = Image.FromFile(rutaImagen);
+                    try
+                    {
+                        pbxFoto3.Image = Image.FromFile(rutaImagen);
+                    }
+                    catch (Exception ex) { MessageBox.Show("Imagen no válida, seleccione otra."); }
                 }
             }
         }
@@ -176,7 +187,11 @@ namespace CapaVisual.ModuloDocente
                 {
                     string rutaImagen = openFileDialog.FileName;
 
-                    pbxFoto4.Image = Image.FromFile(rutaImagen);
+                    try
+                    {
+                        pbxFoto4.Image = Image.FromFile(rutaImagen);
+                    }
+                    catch (Exception ex) { MessageBox.Show("Imagen no válida, seleccione otra."); }
                 }
             }
         }
@@ -237,11 +252,10 @@ namespace CapaVisual.ModuloDocente
                 fotos.Imagen2 = imagen2;
                 fotos.Imagen3 = imagen3;
                 fotos.Imagen4 = imagen4;
-                
 
-                MessageBox.Show(fotos.Id_Candidata.ToString());
+
                 // Llama al método AgregarImagenes de tu capa de negocios
-                bool resultado = objGa_capa_negocio.AgregarImagenes(fotos);
+                bool resultado = obj_fotos.AgregarImagenes(fotos);
 
                 if (resultado)
                 {
@@ -256,7 +270,6 @@ namespace CapaVisual.ModuloDocente
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
         }
 
         private byte[] ImageToByteArray(Image image)
@@ -271,28 +284,44 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        int candidataId;
         private void dgvCandidatasInfo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            pbxMayor.Image = null;
             EnableCampos(true);
-            int candidataId = Convert.ToInt32(dgvCandidatasInfo.SelectedRows[0].Cells["id"].Value);
-
+            candidataId = Convert.ToInt32(dgvCandidatasInfo.SelectedRows[0].Cells["id"].Value);
             if (candidataId != -1)
             {
                 try
                 {
-                    List<CN_Fotos> fotos = objGa_capa_negocio.ObtenerFotosPorCandidata(candidataId);
+                    List<CN_Fotos> fotos = obj_fotos.ObtenerFotosPorCandidata(candidataId);
                     MostrarFotosEnPictureBox(fotos);
+                    if(pbxFoto1.Image != null && pbxFoto2.Image != null && pbxFoto3.Image != null && pbxFoto4.Image != null)
+                    {
+                        btnGuardar.Enabled = false;
+                        btnEliminarTodo.Enabled = true;
+                    }else
+                    {
+                        btnGuardar.Enabled = true;
+                        btnEliminarTodo.Enabled = false;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al obtener las fotos: {ex.Message}");
+                    if (pbxFoto1.Image == null && pbxFoto2.Image == null && pbxFoto3.Image == null && pbxFoto4.Image == null)
+                    {
+                        btnGuardar.Enabled = true;
+                        btnEliminarTodo.Enabled = false;
+                    }
+
+                    MessageBox.Show("Esta candidata no contiene fotos.");
                 }
             }
         }
 
         private void EnableCampos(bool opcion)
         {
-            if(opcion)
+            if (opcion)
             {
                 tbxTitulo.Enabled = true;
                 tbxDescripcion.Enabled = true;
@@ -347,5 +376,34 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        private void btnEliminarTodo_Click(object sender, EventArgs e)
+        {
+
+            if (candidataId > 0)
+            {
+                try
+                {
+                    CN_Fotos fotosAEliminar = new CN_Fotos();
+                    fotosAEliminar.Id_Candidata = candidataId;
+
+                    if (obj_fotos.EliminarFotos(fotosAEliminar))
+                    {
+                        MessageBox.Show("Fotos eliminadas!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Registro no pudo ser eliminado!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar fotos: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una candidata antes de eliminar.");
+            }
+        }
     }
 }

@@ -86,6 +86,7 @@
             btnVotaciones.TabIndex = 5;
             btnVotaciones.Text = "Votaciones";
             btnVotaciones.UseVisualStyleBackColor = true;
+            btnVotaciones.Click += btnVotaciones_Click;
             // 
             // lblVisitaCandidatas
             // 

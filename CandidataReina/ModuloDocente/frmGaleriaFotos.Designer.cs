@@ -91,7 +91,7 @@
             // 
             btnCancelar.Location = new Point(452, 537);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(112, 34);
+            btnCancelar.Size = new Size(128, 34);
             btnCancelar.TabIndex = 3;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -183,10 +183,11 @@
             // 
             btnEliminarTodo.Location = new Point(452, 492);
             btnEliminarTodo.Name = "btnEliminarTodo";
-            btnEliminarTodo.Size = new Size(141, 34);
+            btnEliminarTodo.Size = new Size(128, 34);
             btnEliminarTodo.TabIndex = 9;
             btnEliminarTodo.Text = "Eliminar todo";
             btnEliminarTodo.UseVisualStyleBackColor = true;
+            btnEliminarTodo.Click += btnEliminarTodo_Click;
             // 
             // groupBox3
             // 
@@ -292,7 +293,7 @@
             // 
             btnGuardar.Location = new Point(452, 449);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(112, 34);
+            btnGuardar.Size = new Size(128, 34);
             btnGuardar.TabIndex = 8;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
