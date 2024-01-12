@@ -16,7 +16,7 @@ namespace CandidataReina
             ApplicationConfiguration.Initialize();
 
             frmLogin pantallaLogin = new frmLogin();
-            Application.Run(new frmGaleriaFotos());
+            Application.Run(pantallaLogin);
         }
 
     }
