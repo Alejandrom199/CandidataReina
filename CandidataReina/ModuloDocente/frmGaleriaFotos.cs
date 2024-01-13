@@ -40,9 +40,9 @@ namespace CapaVisual.ModuloDocente
                 MessageBox.Show(ex.Message);
             }
 
-            int valor = dgvCandidatasInfo.ColumnCount;
-            int mitadAlto = dgvCandidatasInfo.Height / 4;
-            int mitadAncho = dgvCandidatasInfo.Width / 3;
+                int valor = dgvCandidatasInfo.ColumnCount;
+                int mitadAlto = dgvCandidatasInfo.Height / 4;
+                int mitadAncho = dgvCandidatasInfo.Width / 3;
 
             for (int i = 0; i < valor; i++)
             {

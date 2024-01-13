@@ -77,6 +77,7 @@
             btnVisitCandidatas.TabIndex = 4;
             btnVisitCandidatas.Text = "Visita de Candidatas";
             btnVisitCandidatas.UseVisualStyleBackColor = true;
+            btnVisitCandidatas.Click += btnVisitCandidatas_Click;
             // 
             // btnVotaciones
             // 

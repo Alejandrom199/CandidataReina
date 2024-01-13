@@ -133,14 +133,20 @@ namespace CapaVisual
 
         private void btnGaleria_Click(object sender, EventArgs e)
         {
-            frmGaleriaFotos frmGaleriaFotos = new frmGaleriaFotos();
-            frmGaleriaFotos.Show();
+            frmGaleriaFotos pantallaGaleriaFotos = new frmGaleriaFotos();
+            pantallaGaleriaFotos.Show();
         }
 
         private void btnVotaciones_Click(object sender, EventArgs e)
         {
-            frmVotacion frmVotaciones = new frmVotacion();
-            frmVotaciones.Show();
+            frmVotacion pantallaVotaciones = new frmVotacion();
+            pantallaVotaciones.Show();
+        }
+
+        private void btnVisitCandidatas_Click(object sender, EventArgs e)
+        {
+            frmVisitaCandidatas pantallaVisitaCandidata = new frmVisitaCandidatas();
+            pantallaVisitaCandidata.Show();
         }
     }
 }
