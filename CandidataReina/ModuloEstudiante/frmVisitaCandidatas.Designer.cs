@@ -34,6 +34,10 @@
             btnCancelar = new Button();
             groupBox2 = new GroupBox();
             panelContenido = new Panel();
+            tbxDescripcion = new TextBox();
+            tbxTitulo = new TextBox();
+            label16 = new Label();
+            label15 = new Label();
             label14 = new Label();
             pbxFoto4 = new PictureBox();
             pbxFoto3 = new PictureBox();
@@ -44,7 +48,7 @@
             groupBox4 = new GroupBox();
             tbxAspiraciones = new TextBox();
             tbxHabilidades = new TextBox();
-            tbxInteres = new TextBox();
+            tbxIntereses = new TextBox();
             tbxPasatiempos = new TextBox();
             tbxSemestre = new TextBox();
             tbxCarrera = new TextBox();
@@ -101,6 +105,7 @@
             dgvCandidatasInfo.RowTemplate.Height = 33;
             dgvCandidatasInfo.Size = new Size(290, 388);
             dgvCandidatasInfo.TabIndex = 2;
+            dgvCandidatasInfo.CellClick += dgvCandidatasInfo_CellClick;
             dgvCandidatasInfo.CellContentClick += dgvCandidatasInfo_CellContentClick;
             dgvCandidatasInfo.CellPainting += dgvCandidatasInfo_CellPainting;
             // 
@@ -137,8 +142,12 @@
             // panelContenido
             // 
             panelContenido.AutoScroll = true;
-            panelContenido.BackColor = SystemColors.Control;
+            panelContenido.BackColor = SystemColors.ButtonHighlight;
             panelContenido.BorderStyle = BorderStyle.FixedSingle;
+            panelContenido.Controls.Add(tbxDescripcion);
+            panelContenido.Controls.Add(tbxTitulo);
+            panelContenido.Controls.Add(label16);
+            panelContenido.Controls.Add(label15);
             panelContenido.Controls.Add(label14);
             panelContenido.Controls.Add(pbxFoto4);
             panelContenido.Controls.Add(pbxFoto3);
@@ -148,7 +157,7 @@
             panelContenido.Controls.Add(groupBox3);
             panelContenido.Controls.Add(tbxAspiraciones);
             panelContenido.Controls.Add(tbxHabilidades);
-            panelContenido.Controls.Add(tbxInteres);
+            panelContenido.Controls.Add(tbxIntereses);
             panelContenido.Controls.Add(tbxPasatiempos);
             panelContenido.Controls.Add(tbxSemestre);
             panelContenido.Controls.Add(tbxCarrera);
@@ -175,10 +184,46 @@
             panelContenido.Size = new Size(661, 538);
             panelContenido.TabIndex = 0;
             // 
+            // tbxDescripcion
+            // 
+            tbxDescripcion.AllowDrop = true;
+            tbxDescripcion.Location = new Point(341, 974);
+            tbxDescripcion.Name = "tbxDescripcion";
+            tbxDescripcion.ReadOnly = true;
+            tbxDescripcion.Size = new Size(259, 31);
+            tbxDescripcion.TabIndex = 34;
+            // 
+            // tbxTitulo
+            // 
+            tbxTitulo.AllowDrop = true;
+            tbxTitulo.Location = new Point(40, 974);
+            tbxTitulo.Name = "tbxTitulo";
+            tbxTitulo.ReadOnly = true;
+            tbxTitulo.Size = new Size(252, 31);
+            tbxTitulo.TabIndex = 33;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(341, 928);
+            label16.Name = "label16";
+            label16.Size = new Size(104, 25);
+            label16.TabIndex = 32;
+            label16.Text = "Descripcion";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(33, 928);
+            label15.Name = "label15";
+            label15.Size = new Size(56, 25);
+            label15.TabIndex = 31;
+            label15.Text = "Titulo";
+            // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(304, 1600);
+            label14.Location = new Point(304, 1681);
             label14.Name = "label14";
             label14.Size = new Size(32, 25);
             label14.TabIndex = 30;
@@ -187,27 +232,30 @@
             // pbxFoto4
             // 
             pbxFoto4.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto4.Location = new Point(341, 1275);
+            pbxFoto4.Location = new Point(341, 1356);
             pbxFoto4.Name = "pbxFoto4";
             pbxFoto4.Size = new Size(259, 302);
+            pbxFoto4.SizeMode = PictureBoxSizeMode.StretchImage;
             pbxFoto4.TabIndex = 29;
             pbxFoto4.TabStop = false;
             // 
             // pbxFoto3
             // 
             pbxFoto3.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto3.Location = new Point(33, 1275);
+            pbxFoto3.Location = new Point(33, 1356);
             pbxFoto3.Name = "pbxFoto3";
             pbxFoto3.Size = new Size(259, 302);
+            pbxFoto3.SizeMode = PictureBoxSizeMode.StretchImage;
             pbxFoto3.TabIndex = 28;
             pbxFoto3.TabStop = false;
             // 
             // pbxFoto2
             // 
             pbxFoto2.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto2.Location = new Point(341, 944);
+            pbxFoto2.Location = new Point(341, 1025);
             pbxFoto2.Name = "pbxFoto2";
             pbxFoto2.Size = new Size(259, 302);
+            pbxFoto2.SizeMode = PictureBoxSizeMode.StretchImage;
             pbxFoto2.TabIndex = 27;
             pbxFoto2.TabStop = false;
             // 
@@ -222,9 +270,10 @@
             // pbxFoto1
             // 
             pbxFoto1.BorderStyle = BorderStyle.FixedSingle;
-            pbxFoto1.Location = new Point(33, 944);
+            pbxFoto1.Location = new Point(33, 1025);
             pbxFoto1.Name = "pbxFoto1";
             pbxFoto1.Size = new Size(259, 302);
+            pbxFoto1.SizeMode = PictureBoxSizeMode.StretchImage;
             pbxFoto1.TabIndex = 25;
             pbxFoto1.TabStop = false;
             // 
@@ -263,14 +312,14 @@
             tbxHabilidades.Size = new Size(259, 135);
             tbxHabilidades.TabIndex = 22;
             // 
-            // tbxInteres
+            // tbxIntereses
             // 
-            tbxInteres.Location = new Point(341, 529);
-            tbxInteres.Multiline = true;
-            tbxInteres.Name = "tbxInteres";
-            tbxInteres.ReadOnly = true;
-            tbxInteres.Size = new Size(259, 135);
-            tbxInteres.TabIndex = 21;
+            tbxIntereses.Location = new Point(341, 529);
+            tbxIntereses.Multiline = true;
+            tbxIntereses.Name = "tbxIntereses";
+            tbxIntereses.ReadOnly = true;
+            tbxIntereses.Size = new Size(259, 135);
+            tbxIntereses.TabIndex = 21;
             // 
             // tbxPasatiempos
             // 
@@ -433,6 +482,7 @@
             pbxMaster.Location = new Point(27, 77);
             pbxMaster.Name = "pbxMaster";
             pbxMaster.Size = new Size(222, 264);
+            pbxMaster.SizeMode = PictureBoxSizeMode.StretchImage;
             pbxMaster.TabIndex = 2;
             pbxMaster.TabStop = false;
             // 
@@ -504,7 +554,7 @@
         private Label label9;
         private TextBox tbxAspiraciones;
         private TextBox tbxHabilidades;
-        private TextBox tbxInteres;
+        private TextBox tbxIntereses;
         private TextBox tbxPasatiempos;
         private TextBox tbxSemestre;
         private TextBox tbxCarrera;
@@ -521,5 +571,9 @@
         private PictureBox pbxFoto4;
         private PictureBox pbxFoto3;
         private PictureBox pbxFoto2;
+        private TextBox tbxDescripcion;
+        private TextBox tbxTitulo;
+        private Label label16;
+        private Label label15;
     }
 }

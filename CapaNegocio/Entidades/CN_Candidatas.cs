@@ -277,5 +277,36 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        public DataRow getAllCandidataById(CN_Candidatas candidata)
+        {
+            try
+            {
+                string nombreStoredProcedure = "SP_GET_ALL_CANDIDATA_BY_ID";
+
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+             new SqlParameter("@id", candidata.id)
+                };
+
+                DataTable dataTable = obj_capa_datos.EjecutarSPSelect(nombreStoredProcedure, parametros);
+
+                // Verificar si se obtuvieron resultados
+                if (dataTable.Rows.Count > 0)
+                {
+                    // Devolver la primera fila que contiene los datos de la candidata
+                    return dataTable.Rows[0];
+                }
+                else
+                {
+                    // No se encontraron resultados para el id proporcionado.
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener datos de la candidata por ID. " + ex.Message);
+            }
+        }
+
     }
 }

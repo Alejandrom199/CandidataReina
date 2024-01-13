@@ -17,7 +17,7 @@ namespace CandidataReina
             ApplicationConfiguration.Initialize();
 
             frmLogin pantallaLogin = new frmLogin();
-            Application.Run(new frmVisitaCandidatas());
+            Application.Run(pantallaLogin);
         }
 
     }

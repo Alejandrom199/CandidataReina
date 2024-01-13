@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace CapaVisual.ModuloEstudiante
     public partial class frmVisitaCandidatas : Form
     {
         CN_Candidatas obj_candidatas = new CN_Candidatas();
+        CN_Fotos obj_fotos = new CN_Fotos();
         private VScrollBar vScrollBar1;
         public frmVisitaCandidatas()
         {
@@ -62,12 +64,12 @@ namespace CapaVisual.ModuloEstudiante
 
         private void dgvCandidatasInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*try
+            try
             {
                 CN_Candidatas candidata = new CN_Candidatas();
-                candidata.Id = Convert.ToInt32(tbxId.Text);
+                candidata.Id = Convert.ToInt32(dgvCandidatasInfo.SelectedRows[0].Cells["id"].Value);
 
-                DataRow dataRow = obj_candidata.getCandidataById(candidata);
+                DataRow dataRow = obj_candidatas.getCandidataById(candidata);
 
                 if (dataRow != null)
                 {
@@ -86,13 +88,13 @@ namespace CapaVisual.ModuloEstudiante
                     {
                         using (MemoryStream ms = new MemoryStream(imagenBytes))
                         {
-                            pbxFotoCandidata.Image = Image.FromStream(ms);
+                            pbxMaster.Image = Image.FromStream(ms);
                         }
                     }
                     else
                     {
                         // Si la imagen está vacía, podrías establecer un valor predeterminado o dejar el PictureBox vacío.
-                        pbxFotoCandidata.Image = null;
+                        pbxMaster.Image = null;
                     }
                 }
                 else
@@ -104,34 +106,12 @@ namespace CapaVisual.ModuloEstudiante
             catch (Exception ex)
             {
                 MessageBox.Show("Error al buscar datos: " + ex.Message);
-            }*/
+            }
         }
 
         private void dgvCandidatasInfo_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == dgvCandidatasInfo.Columns[12].Index)
-            {
-                // Obtén la imagen original en formato byte[]
-                byte[] datosImagen = (byte[])dgvCandidatasInfo[12, e.RowIndex].Value;
-
-                // Convierte los datos en byte[] a una imagen
-                Image imagenOriginal;
-                using (MemoryStream ms = new MemoryStream(datosImagen))
-                {
-                    imagenOriginal = Image.FromStream(ms);
-                }
-
-                // Obtén las dimensiones de la celda
-                int celdaAncho = e.CellBounds.Width;
-                int celdaAlto = e.CellBounds.Height;
-
-                // Dibuja la imagen en la celda utilizando el modo StretchImage
-                e.Graphics.DrawImage(imagenOriginal, e.CellBounds, new Rectangle(0, 0, imagenOriginal.Width, imagenOriginal.Height), GraphicsUnit.Pixel);
-
-                // Indica que la celda ha sido pintada, evitando que el valor original se dibuje
-                e.Handled = true;
-
-            }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -148,6 +128,112 @@ namespace CapaVisual.ModuloEstudiante
             dgvCandidatasInfo.RowHeadersVisible = false;
             dgvCandidatasInfo.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvCandidatasInfo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private string CarreraValorToValor(string carrera)
+        {
+            if (carrera == "1") { return "CIVIL"; }
+            else if (carrera == "2") { return "SOFTWARE"; }
+            else if (carrera == "3") { return "TICS"; }
+            else { return "NULL"; }
+        }
+
+        int candidataId;
+
+        private void dgvCandidatasInfo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                CN_Candidatas candidata = new CN_Candidatas();
+                candidata.Id = Convert.ToInt32(dgvCandidatasInfo.SelectedRows[0].Cells["id"].Value);
+
+                DataRow dataRow = obj_candidatas.getAllCandidataById(candidata);
+
+                if (dataRow != null)
+                {
+                    // Mostrar los valores en los controles de tu formulario
+                    tbxNombre.Text = dataRow["nombre"].ToString();
+                    tbxApellidos.Text = dataRow["apellidos"].ToString();
+                    tbxEdad.Text = dataRow["edad"].ToString();
+                    tbxTelefono.Text = dataRow["telefono"].ToString();
+                    tbxProvincia.Text = dataRow["provincia"].ToString();
+                    tbxCarrera.Text = CarreraValorToValor(dataRow["id_carrera"].ToString());
+                    tbxSemestre.Text = dataRow["semestre"].ToString();
+                    tbxPasatiempos.Text = dataRow["pasatiempos"].ToString();
+                    tbxHabilidades.Text = dataRow["habilidades"].ToString();
+                    tbxAspiraciones.Text = dataRow["aspiraciones"].ToString();
+                    tbxIntereses.Text = dataRow["intereses"].ToString();
+
+                    byte[] imagenBytes = (byte[])dataRow["imagen"];
+                    if (imagenBytes != null && imagenBytes.Length > 0)
+                    {
+                        using (MemoryStream ms = new MemoryStream(imagenBytes))
+                        {
+                            pbxMaster.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        // Si la imagen está vacía, podrías establecer un valor predeterminado o dejar el PictureBox vacío.
+                        pbxMaster.Image = null;
+                    }
+                }
+                else
+                {
+                    // No se encontraron resultados para el id proporcionado.
+                    MessageBox.Show("No se encontraron datos para el id proporcionado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar datos: " + ex.Message);
+            }
+
+            candidataId = Convert.ToInt32(dgvCandidatasInfo.SelectedRows[0].Cells["id"].Value);
+            if (candidataId != -1)
+            {
+                try
+                {
+                    List<CN_Fotos> fotos = obj_fotos.ObtenerFotosPorCandidata(candidataId);
+                    MostrarFotosEnPictureBox(fotos);
+                    
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        private void MostrarFotosEnPictureBox(List<CN_Fotos> fotos)
+        {
+            // Limpia las imágenes anteriores
+            pbxFoto1.Image = null;
+            pbxFoto2.Image = null;
+            pbxFoto3.Image = null;
+            pbxFoto4.Image = null;
+
+            pbxFoto1.Image = ByteArrayToImage(fotos[0].Imagen1);
+            pbxFoto2.Image = ByteArrayToImage(fotos[0].Imagen2);
+            pbxFoto3.Image = ByteArrayToImage(fotos[0].Imagen3);
+            pbxFoto4.Image = ByteArrayToImage(fotos[0].Imagen4);
+
+            tbxTitulo.Text = fotos[0].Titulo;
+            tbxDescripcion.Text = fotos[0].Descripcion;
+        }
+
+        //Metodo para transformar bytes a imagen
+        private Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            if (byteArrayIn == null || byteArrayIn.Length == 0)
+            {
+                return null;
+            }
+
+            using (MemoryStream ms = new MemoryStream(byteArrayIn))
+            {
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
         }
     }
 }
