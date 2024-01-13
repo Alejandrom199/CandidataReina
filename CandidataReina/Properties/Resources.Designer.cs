@@ -59,15 +59,5 @@ namespace CapaVisual.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ug_reina {
-            get {
-                object obj = ResourceManager.GetObject("ug-reina", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

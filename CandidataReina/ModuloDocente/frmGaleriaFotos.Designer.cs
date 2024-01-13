@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGaleriaFotos));
             dgvCandidatasInfo = new DataGridView();
             label1 = new Label();
             btnCancelar = new Button();
@@ -50,6 +51,7 @@
             pbxFoto2 = new PictureBox();
             pbxFoto1 = new PictureBox();
             btnGuardar = new Button();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvCandidatasInfo).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -66,6 +68,7 @@
             // 
             dgvCandidatasInfo.AllowUserToAddRows = false;
             dgvCandidatasInfo.AllowUserToDeleteRows = false;
+            dgvCandidatasInfo.BackgroundColor = SystemColors.InactiveBorder;
             dgvCandidatasInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCandidatasInfo.Location = new Point(32, 97);
             dgvCandidatasInfo.Name = "dgvCandidatasInfo";
@@ -99,6 +102,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = SystemColors.ControlLightLight;
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(dgvCandidatasInfo);
             groupBox1.Location = new Point(16, 2);
@@ -110,6 +114,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = SystemColors.ControlLightLight;
             groupBox2.Controls.Add(btnCancelar);
             groupBox2.Controls.Add(groupBox4);
             groupBox2.Controls.Add(btnEliminarTodo);
@@ -299,6 +304,16 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1067, 608);
+            panel1.TabIndex = 6;
+            // 
             // frmGaleriaFotos
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -306,6 +321,9 @@
             ClientSize = new Size(1067, 608);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmGaleriaFotos";
             Text = "frmGaleriaFotos";
             Load += frmGaleriaFotos_Load;
@@ -348,5 +366,6 @@
         private TextBox tbxTitulo;
         private Label label3;
         private Label label2;
+        private Panel panel1;
     }
 }

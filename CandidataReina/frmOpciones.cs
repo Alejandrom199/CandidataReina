@@ -22,12 +22,12 @@ namespace CapaVisual
 
         private string id_rol;
         private string cedula;
+
         public frmOpciones()
         {
             InitializeComponent();
             centrarFormulario();
             MaximizeBox = false;
-            FormClosed += frmOpciones_FormClosed;
 
         }
         public string Cedula
@@ -41,6 +41,9 @@ namespace CapaVisual
             set { id_rol = value; }
         }
 
+        /**
+         * Método para centrar el formulario
+         **/
         public void centrarFormulario()
         {
             StartPosition = FormStartPosition.Manual;
@@ -58,12 +61,16 @@ namespace CapaVisual
             lblUsuario.Text = "Usuario: " + Cedula;
         }
 
+        /**
+         * Método para mostrar opciones según el usuario
+         **/
         public void mostrarOpciones(string rol)
         {
             try
             {
                 if (rol == "1")
                 {
+                    lblPerfil.Text = "Rol: Estudiante";
                     btnVisitCandidatas.Visible = true;
                     btnVotaciones.Visible = true;
                     btnAddCandidata.Visible = false;
@@ -79,6 +86,7 @@ namespace CapaVisual
 
                 else if (rol == "2")
                 {
+                    lblPerfil.Text = "Rol: Docente";
                     btnVisitCandidatas.Visible = false;
                     btnVotaciones.Visible = false;
                     btnAddCandidata.Visible = true;
@@ -94,6 +102,7 @@ namespace CapaVisual
 
                 else
                 {
+                    lblPerfil.Text = "Rol: Administrador";
                     btnVisitCandidatas.Enabled = true;
                     btnVotaciones.Enabled = true;
                     btnAddCandidata.Enabled = true;
@@ -109,24 +118,13 @@ namespace CapaVisual
 
         }
 
+        /**
+         * Eventos de clic
+         **/
         private void btnAddCandidata_Click(object sender, EventArgs e)
         {
             frmCandidatas frmCandidatas = new frmCandidatas();
             frmCandidatas.Show();
-        }
-
-        private void frmOpciones_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas cerrar la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else if (resultado == DialogResult.No)
-            {
-
-            }
         }
 
         private void btnGaleria_Click(object sender, EventArgs e)
@@ -152,6 +150,20 @@ namespace CapaVisual
         {
             frmConsultaResultados pantallaConsultar = new frmConsultaResultados();
             pantallaConsultar.Show();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas cerrar la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (resultado == DialogResult.No)
+            {
+
+            }
         }
     }
 }

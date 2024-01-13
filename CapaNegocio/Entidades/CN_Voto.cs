@@ -53,6 +53,9 @@ namespace CapaNegocio.Entidades
             get { return  cedula_usuario; } set {  cedula_usuario = value;}
         }
 
+        /**
+         * Método para la lista de las más votadas
+         **/
         public DataTable GetListaVotos()
         {
             try
@@ -67,6 +70,9 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        /**
+         * Método para crear la votación
+         **/
         public bool CrearVoto(CN_Usuario user)
         {
             try

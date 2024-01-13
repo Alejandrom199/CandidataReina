@@ -10,7 +10,7 @@ namespace CandidataReina
     public partial class frmLogin : Form
     {
         CN_Usuario obj_usuario = new CN_Usuario();
-        
+
         public bool flagVerClave;
         public frmLogin()
         {
@@ -62,6 +62,7 @@ namespace CandidataReina
         public void centrarFormulario()
         {
             StartPosition = FormStartPosition.Manual;
+
             Location = new Point(
                 (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
                 (Screen.PrimaryScreen.Bounds.Height - Height) / 2
@@ -77,15 +78,36 @@ namespace CandidataReina
 
         private void btnVerClave_Click(object sender, EventArgs e)
         {
-            
-            if(flagVerClave){
+
+            if (flagVerClave)
+            {
                 tbxClave.PasswordChar = '\0';
                 flagVerClave = false;
-            }else
+            }
+            else
             {
                 tbxClave.PasswordChar = '*';
                 flagVerClave = true;
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas cerrar la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (resultado == DialogResult.No)
+            {
+
+            }
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

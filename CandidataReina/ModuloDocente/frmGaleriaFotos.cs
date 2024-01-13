@@ -15,14 +15,26 @@ namespace CapaVisual.ModuloDocente
 {
     public partial class frmGaleriaFotos : Form
     {
-        CN_Candidatas obj_candidatas = new CN_Candidatas();
+        CN_Candidata obj_candidatas = new CN_Candidata();
         CN_Fotos obj_fotos = new CN_Fotos();
         public bool isNuevo = true;
+
         public frmGaleriaFotos()
         {
             InitializeComponent();
+            centrarFormulario();
             dgvCandidatasInfo.CellPainting += dgvCandidatasInfo_CellPainting;
             dgvListaCadidatasConfig();
+        }
+
+        public void centrarFormulario()
+        {
+            StartPosition = FormStartPosition.Manual;
+
+            Location = new Point(
+                (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
+                (Screen.PrimaryScreen.Bounds.Height - Height) / 2
+            );
         }
 
         private void frmGaleriaFotos_Load(object sender, EventArgs e)
@@ -40,18 +52,18 @@ namespace CapaVisual.ModuloDocente
                 MessageBox.Show(ex.Message);
             }
 
-                int valor = dgvCandidatasInfo.ColumnCount;
-                int mitadAlto = dgvCandidatasInfo.Height / 4;
-                int mitadAncho = dgvCandidatasInfo.Width / 3;
+            int valor = dgvCandidatasInfo.ColumnCount;
+            int mitadAlto = dgvCandidatasInfo.Height / 4;
+            int mitadAncho = dgvCandidatasInfo.Width / 3;
 
             for (int i = 0; i < valor; i++)
             {
                 if (i != 0 && i != 1 && i != 12)
                 {
                     dgvCandidatasInfo.Columns[i].Visible = false;
-
                 }
             }
+
             foreach (DataGridViewRow fila in dgvCandidatasInfo.Rows)
             {
                 fila.Height = mitadAlto;
@@ -62,9 +74,11 @@ namespace CapaVisual.ModuloDocente
 
                 }
             }
-
         }
 
+        /**
+         * Método para ver como se van a pintar las celdas del DataGridView
+         **/
         private void dgvCandidatasInfo_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
 
@@ -89,16 +103,13 @@ namespace CapaVisual.ModuloDocente
 
                 // Indica que la celda ha sido pintada, evitando que el valor original se dibuje
                 e.Handled = true;
-
             }
-
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
+        /**
+         * Método para configurar el DataGridView
+         **/
         private void dgvListaCadidatasConfig()
         {
             dgvCandidatasInfo.AllowUserToResizeColumns = false;
@@ -108,10 +119,11 @@ namespace CapaVisual.ModuloDocente
             dgvCandidatasInfo.RowHeadersVisible = false;
             dgvCandidatasInfo.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvCandidatasInfo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-
         }
 
+        /**
+         * Método para examinar imagen
+         **/
         private void btnFoto1_Click(object sender, EventArgs e)
         {
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -136,6 +148,9 @@ namespace CapaVisual.ModuloDocente
                 }
         }
 
+        /**
+         * Método para examinar imagen
+         **/
         private void btnFoto2_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -156,6 +171,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para examinar imagen
+         **/
         private void btnFoto3_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -176,6 +194,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para examinar imagen
+         **/
         private void btnFoto4_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -196,6 +217,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para pasar imagen de pbxFoto1 a pbxMayor
+         **/
         private void pbxFoto1_Click(object sender, EventArgs e)
         {
             if (pbxFoto1.Image != null)
@@ -204,6 +228,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para pasar imagen de pbxFoto2 a pbxMayor
+         **/
         private void pbxFoto2_Click(object sender, EventArgs e)
         {
             if (pbxFoto2.Image != null)
@@ -212,6 +239,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para pasar imagen de pbxFoto3 a pbxMayor
+         **/
         private void pbxFoto3_Click(object sender, EventArgs e)
         {
             if (pbxFoto3.Image != null)
@@ -220,6 +250,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para pasar imagen de pbxFoto4 a pbxMayor
+         **/
         private void pbxFoto4_Click(object sender, EventArgs e)
         {
             if (pbxFoto4.Image != null)
@@ -272,6 +305,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para pasar de Imagen a cadena de Bytes
+         **/
         private byte[] ImageToByteArray(Image image)
         {
             // Convierte una imagen a un array de bytes
@@ -284,7 +320,27 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para pasar de cadena de Bytes a Imagen
+         **/
+        private Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            if (byteArrayIn == null || byteArrayIn.Length == 0)
+            {
+                return null;
+            }
+
+            using (MemoryStream ms = new MemoryStream(byteArrayIn))
+            {
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
+        }
+
         int candidataId;
+        /**
+         * Método que realiza acciones al hacer clic en alguna celda
+         **/
         private void dgvCandidatasInfo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             pbxMayor.Image = null;
@@ -313,12 +369,13 @@ namespace CapaVisual.ModuloDocente
                         btnGuardar.Enabled = true;
                         btnEliminarTodo.Enabled = false;
                     }
-
-                    MessageBox.Show("Esta candidata no contiene fotos.");
                 }
             }
         }
 
+        /**
+         * Método para Habilitar o Deshabilitar campos
+         **/
         private void EnableCampos(bool opcion)
         {
             if (opcion)
@@ -345,6 +402,9 @@ namespace CapaVisual.ModuloDocente
             }
         }
 
+        /**
+         * Método para mostrar imagenes en los PictureBox
+         **/
         private void MostrarFotosEnPictureBox(List<CN_Fotos> fotos)
         {
             // Limpia las imágenes anteriores
@@ -362,19 +422,6 @@ namespace CapaVisual.ModuloDocente
             tbxDescripcion.Text = fotos[0].Descripcion;
         }
 
-        private Image ByteArrayToImage(byte[] byteArrayIn)
-        {
-            if (byteArrayIn == null || byteArrayIn.Length == 0)
-            {
-                return null;
-            }
-
-            using (MemoryStream ms = new MemoryStream(byteArrayIn))
-            {
-                Image returnImage = Image.FromStream(ms);
-                return returnImage;
-            }
-        }
 
         private void btnEliminarTodo_Click(object sender, EventArgs e)
         {
@@ -404,6 +451,11 @@ namespace CapaVisual.ModuloDocente
             {
                 MessageBox.Show("Selecciona una candidata antes de eliminar.");
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

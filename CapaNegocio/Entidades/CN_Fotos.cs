@@ -51,20 +51,17 @@ namespace CapaNegocio.Entidades
 
         public byte[] Imagen2
         {
-            get { return imagen2; }
-            set { imagen2 = value; }
+            get { return imagen2; } set { imagen2 = value; }
         }
 
         public byte[] Imagen3
         {
-            get { return imagen3; }
-            set { imagen3 = value; }
+            get { return imagen3; } set { imagen3 = value; }
         }
 
         public byte[] Imagen4
         {
-            get { return imagen4; }
-            set { imagen4 = value; }
+            get { return imagen4; } set { imagen4 = value; }
         }
         public string Titulo 
         { 
@@ -79,19 +76,20 @@ namespace CapaNegocio.Entidades
             get {  return id_Candidata; } set {  id_Candidata = value; } 
         }
 
+        /**
+         * Método para agregar imagenes
+         **/
         public bool AgregarImagenes(CN_Fotos fotos)
         {
             try
             {
-                // Modifica la consulta SQL para incluir el parámetro de imagen
                 var sql = "INSERT INTO tb_fotos(id_candidata, titulo, descripcion, imagen1, imagen2, imagen3, imagen4)" +
                     "VALUES(" +
                     "'" + fotos.Id_Candidata + "'," +
-                    "'" + fotos.Titulo + "'," + // Agrega comillas simples alrededor de fotos.Titulo
-                    "'" + fotos.Descripcion + "'," + // Agrega comillas simples alrededor de fotos.Descripcion
+                    "'" + fotos.Titulo + "'," + 
+                    "'" + fotos.Descripcion + "'," + 
                     "@imagen1, @imagen2, @imagen3, @imagen4)";
 
-                // Agrega el parámetro de imagen a la consulta SQL
                 var parameters = new List<SqlParameter>
                 {
                     new SqlParameter("@imagen1", SqlDbType.VarBinary) { Value = fotos.Imagen1 },
@@ -108,9 +106,11 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        /**
+         * Método para modificar imagenes
+         **/
         public bool ModificarImagenes(CN_Fotos fotos)
         {
-
             try
             {
                 string nombreStoredProcedure = "SP_MODIFICAR_FOTOS";
@@ -132,9 +132,11 @@ namespace CapaNegocio.Entidades
             {
                 throw new Exception("Error al modificar galeria: " + e.Message);
             }
-
         }
 
+        /**
+         * Método para obtener las fotos por candidata
+         **/
         public List<CN_Fotos> ObtenerFotosPorCandidata(int id_candidata)
         {
             List<CN_Fotos> fotos = new List<CN_Fotos>();
@@ -164,16 +166,15 @@ namespace CapaNegocio.Entidades
                     }
                 }
             }
-
-            // Agrega mensajes de depuración
-            Console.WriteLine("Cantidad de fotos obtenidas: " + fotos.Count);
-
             return fotos;
         }
 
+
+        /**
+         * Método para eliminar todas las imagenes
+         **/
         public bool EliminarFotos(CN_Fotos fotos)
         {
-
             try
             {
                 string nombreStoredProcedure = "SP_ELIMINAR_GALERIA";
@@ -189,7 +190,6 @@ namespace CapaNegocio.Entidades
             {
                 throw new Exception("Error al eliminar fotos: " + e.Message);
             }
-
         }
     }
 }

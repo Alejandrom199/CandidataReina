@@ -43,44 +43,40 @@ namespace CapaNegocio.Entidades
 
         public string Cedula
         {
-            get { return cedula; }
-            set { cedula = value; }
+            get { return cedula; } set { cedula = value; }
         }
         public string Nombres
         {
-            get { return nombres; }
-            set { nombres = value; }
+            get { return nombres; } set { nombres = value; }
         }
 
         public string Username
         {
-            get { return username; }
-            set { username = value; }
+            get { return username; } set { username = value; }
         }
 
         public string Email
         {
-            get { return email; }
-            set { email = value; }
+            get { return email; } set { email = value; }
         }
 
         public string Clave
         {
-            get { return clave; }
-            set { clave = value; }
+            get { return clave; } set { clave = value; }
         }
         public bool Estado
         {
-            get { return estado; }
-            set { estado = value; }
+            get { return estado; } set { estado = value; }
         }
 
         public string PerfilUsuario
         {
-            get { return perfilUsuario; }
-            set { perfilUsuario = value; }
+            get { return perfilUsuario; } set { perfilUsuario = value; }
         }
 
+        /**
+         * Método para validar usuario
+         **/
         public bool ValidarUsuario(CN_Usuario usuario)
         {
             try
@@ -101,6 +97,9 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        /**
+         * Método para obtener la Cedula mediante el usuario
+         **/
         public string ObtenerCedulaPorUsuario(CN_Usuario user)
         {
             try
@@ -122,6 +121,9 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        /**
+         * Método para obtener el rol mediante el usuario
+         **/
         public string ObtenerRolPorUsuario(CN_Usuario user)
         {
             try
@@ -143,6 +145,9 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        /**
+         * Método para realizar el voto
+         **/
         public bool Votar(string nombre, string apellido, string cedula)
         {
             try
@@ -167,7 +172,9 @@ namespace CapaNegocio.Entidades
             }
         }
 
-        // Método para obtener el estado de votación
+        /**
+         * Método para obtener el estado de las votaciones
+         **/
         public bool ObtenerEstadoVotacion(string cedula)
         {
             try

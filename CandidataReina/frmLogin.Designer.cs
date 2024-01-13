@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             btnLogin = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -35,20 +36,25 @@
             tbxClave = new TextBox();
             btnVerClave = new Button();
             panel1 = new Panel();
+            btnMinimizar = new Button();
+            btnSalir = new Button();
+            pictureBox1 = new PictureBox();
             label3 = new Label();
-            linkLabel1 = new LinkLabel();
             panel2 = new Panel();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
             // btnLogin
             // 
             btnLogin.BackColor = SystemColors.Highlight;
+            btnLogin.ForeColor = SystemColors.ControlLightLight;
             btnLogin.Location = new Point(180, 305);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(112, 34);
+            btnLogin.Size = new Size(110, 40);
             btnLogin.TabIndex = 0;
-            btnLogin.Text = "Login";
+            btnLogin.Text = "Ingresar";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
@@ -86,47 +92,77 @@
             // 
             // btnVerClave
             // 
+            btnVerClave.BackgroundImage = (Image)resources.GetObject("btnVerClave.BackgroundImage");
+            btnVerClave.BackgroundImageLayout = ImageLayout.Stretch;
             btnVerClave.Location = new Point(331, 205);
             btnVerClave.Name = "btnVerClave";
             btnVerClave.Size = new Size(34, 34);
             btnVerClave.TabIndex = 5;
-            btnVerClave.Text = "o";
             btnVerClave.UseVisualStyleBackColor = true;
             btnVerClave.Click += btnVerClave_Click;
             // 
             // panel1
             // 
-            panel1.BackgroundImage = CapaVisual.Properties.Resources.ug_reina;
+            panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 451);
             panel1.TabIndex = 6;
             // 
+            // btnMinimizar
+            // 
+            btnMinimizar.BackColor = SystemColors.ControlLightLight;
+            btnMinimizar.BackgroundImage = (Image)resources.GetObject("btnMinimizar.BackgroundImage");
+            btnMinimizar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnMinimizar.Location = new Point(404, 391);
+            btnMinimizar.Name = "btnMinimizar";
+            btnMinimizar.Size = new Size(55, 55);
+            btnMinimizar.TabIndex = 9;
+            btnMinimizar.UseVisualStyleBackColor = false;
+            btnMinimizar.Click += btnMinimizar_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = SystemColors.ControlLightLight;
+            btnSalir.BackgroundImage = (Image)resources.GetObject("btnSalir.BackgroundImage");
+            btnSalir.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSalir.Location = new Point(343, 391);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(55, 55);
+            btnSalir.TabIndex = 8;
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(99, 130);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(150, 150);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(180, 45);
+            label3.Font = new Font("Arial", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.Highlight;
+            label3.Location = new Point(180, 38);
             label3.Name = "label3";
-            label3.Size = new Size(86, 27);
+            label3.Size = new Size(107, 35);
             label3.TabIndex = 7;
             label3.Text = "LOGIN";
-            // 
-            // linkLabel1
-            // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(280, 422);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(179, 25);
-            linkLabel1.TabIndex = 8;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Olvide mi contraseña";
-            linkLabel1.Visible = false;
             // 
             // panel2
             // 
             panel2.BackColor = SystemColors.ButtonHighlight;
-            panel2.Controls.Add(linkLabel1);
+            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.Controls.Add(btnMinimizar);
+            panel2.Controls.Add(btnSalir);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(btnVerClave);
             panel2.Controls.Add(tbxClave);
@@ -146,8 +182,12 @@
             ClientSize = new Size(819, 450);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmLogin";
             Text = "Login";
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -163,7 +203,9 @@
         private Button btnVerClave;
         private Panel panel1;
         private Label label3;
-        private LinkLabel linkLabel1;
         private Panel panel2;
+        private PictureBox pictureBox1;
+        private Button btnMinimizar;
+        private Button btnSalir;
     }
 }

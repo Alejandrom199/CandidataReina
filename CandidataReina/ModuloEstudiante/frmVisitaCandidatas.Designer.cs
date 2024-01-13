@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVisitaCandidatas));
             groupBox1 = new GroupBox();
             dgvCandidatasInfo = new DataGridView();
             label1 = new Label();
@@ -70,6 +71,7 @@
             pbxMaster = new PictureBox();
             label3 = new Label();
             label2 = new Label();
+            panel1 = new Panel();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCandidatasInfo).BeginInit();
             groupBox2.SuspendLayout();
@@ -84,6 +86,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = SystemColors.ControlLightLight;
             groupBox1.Controls.Add(dgvCandidatasInfo);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(12, 15);
@@ -97,6 +100,7 @@
             // 
             dgvCandidatasInfo.AllowUserToAddRows = false;
             dgvCandidatasInfo.AllowUserToDeleteRows = false;
+            dgvCandidatasInfo.BackgroundColor = SystemColors.InactiveBorder;
             dgvCandidatasInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCandidatasInfo.Location = new Point(32, 97);
             dgvCandidatasInfo.Name = "dgvCandidatasInfo";
@@ -131,6 +135,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = SystemColors.ControlLightLight;
             groupBox2.Controls.Add(panelContenido);
             groupBox2.Location = new Point(383, 15);
             groupBox2.Name = "groupBox2";
@@ -506,6 +511,16 @@
             label2.TabIndex = 0;
             label2.Text = "Nombre:";
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1083, 608);
+            panel1.TabIndex = 4;
+            // 
             // frmVisitaCandidatas
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -514,6 +529,9 @@
             Controls.Add(groupBox2);
             Controls.Add(btnCancelar);
             Controls.Add(groupBox1);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmVisitaCandidatas";
             Text = "frmVisitaCandidatas";
             Load += frmVisitaCandidatas_Load;
@@ -575,5 +593,6 @@
         private TextBox tbxTitulo;
         private Label label16;
         private Label label15;
+        private Panel panel1;
     }
 }

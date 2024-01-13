@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCandidatas));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -63,6 +64,7 @@
             groupBox3 = new GroupBox();
             btnNuevo = new Button();
             btnCancelar = new Button();
+            panel1 = new Panel();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCandidatas).BeginInit();
             groupBox2.SuspendLayout();
@@ -171,6 +173,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = SystemColors.ControlLightLight;
             groupBox1.Controls.Add(cbxProvincia);
             groupBox1.Controls.Add(cbxCarrera);
             groupBox1.Controls.Add(label12);
@@ -310,6 +313,7 @@
             // 
             dgvCandidatas.AllowUserToAddRows = false;
             dgvCandidatas.AllowUserToDeleteRows = false;
+            dgvCandidatas.BackgroundColor = SystemColors.InactiveBorder;
             dgvCandidatas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCandidatas.Location = new Point(16, 314);
             dgvCandidatas.Name = "dgvCandidatas";
@@ -322,6 +326,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = SystemColors.ControlLightLight;
             groupBox2.Controls.Add(btnExaminar);
             groupBox2.Controls.Add(pbxCandidata);
             groupBox2.Location = new Point(928, 17);
@@ -342,7 +347,7 @@
             // 
             // pbxCandidata
             // 
-            pbxCandidata.BorderStyle = BorderStyle.FixedSingle;
+            pbxCandidata.BorderStyle = BorderStyle.Fixed3D;
             pbxCandidata.Location = new Point(19, 23);
             pbxCandidata.Name = "pbxCandidata";
             pbxCandidata.Size = new Size(169, 202);
@@ -382,6 +387,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.BackColor = SystemColors.ControlLightLight;
             groupBox3.Controls.Add(btnNuevo);
             groupBox3.Controls.Add(btnCancelar);
             groupBox3.Controls.Add(btnEliminar);
@@ -413,7 +419,17 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // frmCandidatasCrud
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1321, 622);
+            panel1.TabIndex = 25;
+            // 
+            // frmCandidatas
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -422,7 +438,10 @@
             Controls.Add(groupBox2);
             Controls.Add(dgvCandidatas);
             Controls.Add(groupBox1);
-            Name = "frmCandidatasCrud";
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "frmCandidatas";
             Text = "frmCandidatasCrud";
             Load += frmCandidatasCrud_Load;
             groupBox1.ResumeLayout(false);
@@ -471,5 +490,6 @@
         private Label label12;
         private ComboBox cbxCarrera;
         private ComboBox cbxProvincia;
+        private Panel panel1;
     }
 }

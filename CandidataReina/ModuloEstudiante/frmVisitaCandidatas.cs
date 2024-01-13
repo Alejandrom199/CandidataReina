@@ -14,14 +14,25 @@ namespace CapaVisual.ModuloEstudiante
 {
     public partial class frmVisitaCandidatas : Form
     {
-        CN_Candidatas obj_candidatas = new CN_Candidatas();
+        CN_Candidata obj_candidatas = new CN_Candidata();
         CN_Fotos obj_fotos = new CN_Fotos();
         private VScrollBar vScrollBar1;
         public frmVisitaCandidatas()
         {
             InitializeComponent();
+            centrarFormulario();
             dgvCandidatasInfo.CellPainting += dgvCandidatasInfo_CellPainting;
             dgvListaCadidatasConfig();
+        }
+
+        public void centrarFormulario()
+        {
+            StartPosition = FormStartPosition.Manual;
+
+            Location = new Point(
+                (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
+                (Screen.PrimaryScreen.Bounds.Height - Height) / 2
+            );
         }
 
         private void frmVisitaCandidatas_Load(object sender, EventArgs e)
@@ -66,7 +77,7 @@ namespace CapaVisual.ModuloEstudiante
         {
             try
             {
-                CN_Candidatas candidata = new CN_Candidatas();
+                CN_Candidata candidata = new CN_Candidata();
                 candidata.Id = Convert.ToInt32(dgvCandidatasInfo.SelectedRows[0].Cells["id"].Value);
 
                 DataRow dataRow = obj_candidatas.getCandidataById(candidata);
@@ -166,7 +177,7 @@ namespace CapaVisual.ModuloEstudiante
         {
             try
             {
-                CN_Candidatas candidata = new CN_Candidatas();
+                CN_Candidata candidata = new CN_Candidata();
                 candidata.Id = Convert.ToInt32(dgvCandidatasInfo.SelectedRows[0].Cells["id"].Value);
 
                 DataRow dataRow = obj_candidatas.getAllCandidataById(candidata);

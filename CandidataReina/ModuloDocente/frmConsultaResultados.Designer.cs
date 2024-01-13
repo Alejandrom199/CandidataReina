@@ -38,6 +38,7 @@
             label3 = new Label();
             btnCancelar = new Button();
             label4 = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvCandidatas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -48,6 +49,7 @@
             // 
             dgvCandidatas.AllowUserToAddRows = false;
             dgvCandidatas.AllowUserToDeleteRows = false;
+            dgvCandidatas.BackgroundColor = SystemColors.InactiveBorder;
             dgvCandidatas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCandidatas.Location = new Point(11, 337);
             dgvCandidatas.Margin = new Padding(2);
@@ -60,9 +62,9 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = SystemColors.ControlLightLight;
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Location = new Point(378, 67);
             pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
@@ -72,9 +74,9 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.BackColor = SystemColors.ControlLightLight;
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.BorderStyle = BorderStyle.FixedSingle;
             pictureBox2.Location = new Point(668, 130);
             pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
@@ -85,9 +87,9 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.BackColor = SystemColors.ControlLightLight;
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.BorderStyle = BorderStyle.FixedSingle;
             pictureBox3.Location = new Point(133, 130);
             pictureBox3.Margin = new Padding(4);
             pictureBox3.Name = "pictureBox3";
@@ -131,7 +133,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(396, 549);
+            btnCancelar.Location = new Point(396, 545);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(98, 32);
@@ -143,6 +145,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = SystemColors.ControlLightLight;
             label4.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.FromArgb(255, 128, 0);
             label4.Location = new Point(364, 9);
@@ -150,6 +153,16 @@
             label4.Size = new Size(203, 45);
             label4.TabIndex = 20;
             label4.Text = "Reina FCMF";
+            // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(909, 589);
+            panel1.TabIndex = 21;
             // 
             // frmConsultaResultados
             // 
@@ -165,6 +178,9 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(dgvCandidatas);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "frmConsultaResultados";
             Text = "frmConsultaResultados";
@@ -188,5 +204,6 @@
         private Label label3;
         private Button btnCancelar;
         private Label label4;
+        private Panel panel1;
     }
 }

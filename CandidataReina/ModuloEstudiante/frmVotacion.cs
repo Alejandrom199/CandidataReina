@@ -14,7 +14,7 @@ namespace CapaVisual.ModuloEstudiante
 {
     public partial class frmVotacion : Form
     {
-        CN_Candidatas obj_candidata = new CN_Candidatas();
+        CN_Candidata obj_candidata = new CN_Candidata();
         CN_Usuario obj_usuario = new CN_Usuario();
 
         CN_Voto obj_voto = new CN_Voto();
@@ -22,6 +22,7 @@ namespace CapaVisual.ModuloEstudiante
         public frmVotacion()
         {
             InitializeComponent();
+            centrarFormulario();
         }
 
         private void frmVotacion_Load(object sender, EventArgs e)
@@ -29,6 +30,15 @@ namespace CapaVisual.ModuloEstudiante
             InitCampos();
         }
 
+        public void centrarFormulario()
+        {
+            StartPosition = FormStartPosition.Manual;
+
+            Location = new Point(
+                (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
+                (Screen.PrimaryScreen.Bounds.Height - Height) / 2
+            );
+        }
         public string Cedula
         {
             get { return cedula; }
@@ -51,7 +61,7 @@ namespace CapaVisual.ModuloEstudiante
         {
             try
             {
-                CN_Candidatas candidata = new CN_Candidatas();
+                CN_Candidata candidata = new CN_Candidata();
                 candidata.Id = Convert.ToInt32(tbxId.Text);
 
                 DataRow dataRow = obj_candidata.getCandidataById(candidata);

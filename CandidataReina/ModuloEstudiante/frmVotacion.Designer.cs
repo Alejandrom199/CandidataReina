@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVotacion));
             pbxFotoCandidata = new PictureBox();
             tbxId = new TextBox();
             label1 = new Label();
@@ -50,11 +51,13 @@
             tbxIntereses = new TextBox();
             btnBuscar = new Button();
             btnCancelar = new Button();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pbxFotoCandidata).BeginInit();
             SuspendLayout();
             // 
             // pbxFotoCandidata
             // 
+            pbxFotoCandidata.BackColor = SystemColors.ControlLightLight;
             pbxFotoCandidata.BorderStyle = BorderStyle.Fixed3D;
             pbxFotoCandidata.Location = new Point(28, 24);
             pbxFotoCandidata.Margin = new Padding(4);
@@ -261,6 +264,16 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1195, 564);
+            panel1.TabIndex = 38;
+            // 
             // frmVotacion
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -288,6 +301,9 @@
             Controls.Add(label1);
             Controls.Add(tbxId);
             Controls.Add(pbxFotoCandidata);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "frmVotacion";
             Text = "frmVotacion";
@@ -321,5 +337,6 @@
         private TextBox tbxIntereses;
         private Button btnBuscar;
         private Button btnCancelar;
+        private Panel panel1;
     }
 }

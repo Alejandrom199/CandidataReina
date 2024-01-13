@@ -17,12 +17,22 @@ namespace CapaVisual.ModuloDocente
         public frmConsultaResultados()
         {
             InitializeComponent();
+            centrarFormulario();
             StartPosition = FormStartPosition.CenterScreen;
             MaximizeBox = false;
             //Rellenar todo el datagridview ampliando las columnas
             dgvCandidatas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        public void centrarFormulario()
+        {
+            StartPosition = FormStartPosition.Manual;
+
+            Location = new Point(
+                (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
+                (Screen.PrimaryScreen.Bounds.Height - Height) / 2
+            );
+        }
         private void frmConsultaResultados_Load(object sender, EventArgs e)
         {
             try

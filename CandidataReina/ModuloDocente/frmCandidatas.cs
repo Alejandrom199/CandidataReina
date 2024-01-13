@@ -15,16 +15,30 @@ namespace CapaVisual
 {
     public partial class frmCandidatas : Form
     {
-        CN_Candidatas obj_capa_negocio = new CN_Candidatas();
+        CN_Candidata obj_capa_negocio = new CN_Candidata();
 
         public frmCandidatas()
         {
             InitializeComponent();
+            centrarFormulario();
             btnCancelar.Enabled = true;
             MaximizeBox = false;
             btnExaminar.Enabled = false;
         }
 
+        public void centrarFormulario()
+        {
+            StartPosition = FormStartPosition.Manual;
+
+            Location = new Point(
+                (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
+                (Screen.PrimaryScreen.Bounds.Height - Height) / 2
+            );
+        }
+
+        /**
+         * Método para Habilidar o Deshabilitar campos
+         **/
         private void DisableCampos(bool valor)
         {
             if (valor)
@@ -107,7 +121,7 @@ namespace CapaVisual
 
 
         private bool isNuevo;
-        CN_Candidatas obj_cn_candidatas = new CN_Candidatas();
+        CN_Candidata obj_cn_candidatas = new CN_Candidata();
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -125,6 +139,9 @@ namespace CapaVisual
 
         }
 
+        /**
+         * Método para setear o encerar valores
+         **/
         private void SetearCampos()
         {
             tbxId.Text = string.Empty;
@@ -142,6 +159,10 @@ namespace CapaVisual
             tbxApellidos.Text = string.Empty;
             pbxCandidata.Image = null;
         }
+
+        /**
+         * Método para actualizar el DataGridView
+         **/
         private void CargarGridCandidatas()
         {
             try
@@ -180,8 +201,12 @@ namespace CapaVisual
                     try
                     {
                         MemoryStream ms = new MemoryStream();
-                        pbxCandidata.Image.Save(ms, ImageFormat.Png);
-                        obj_cn_candidatas.ImagenByte = ms.ToArray();
+
+                        if(pbxCandidata.Image != null)
+                        {
+                            pbxCandidata.Image.Save(ms, ImageFormat.Png);
+                            obj_cn_candidatas.ImagenByte = ms.ToArray();
+                        }
                     }
                     catch (NullReferenceException ex)
                     {
@@ -253,6 +278,9 @@ namespace CapaVisual
 
         }
 
+        /**
+         * Método para mostrar la imagenes del arreglo de bytes
+         **/
         private void MostrarImagen(byte[] imagenBytes)
         {
             if (imagenBytes != null && imagenBytes.Length > 0)
@@ -306,7 +334,6 @@ namespace CapaVisual
                     MessageBox.Show("Registro no pudo ser actualizado!");
                 }
             }
-
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -332,6 +359,9 @@ namespace CapaVisual
 
         }
 
+        /**
+         * Métodos de transformación de información
+         **/
         private int CarreraValorToNum(string carrera)
         {
             if (carrera == "CIVIL") { return 1; }
