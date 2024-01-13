@@ -1,6 +1,6 @@
 ﻿namespace CapaVisual.ModuloEstudiante
 {
-    partial class frmVisitaCandidatas
+    partial class frmVistaCandidatas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVisitaCandidatas));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVistaCandidatas));
             groupBox1 = new GroupBox();
             dgvCandidatasInfo = new DataGridView();
             label1 = new Label();

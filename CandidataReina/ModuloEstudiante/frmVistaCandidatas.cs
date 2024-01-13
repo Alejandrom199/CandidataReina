@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace CapaVisual.ModuloEstudiante
 {
-    public partial class frmVisitaCandidatas : Form
+    public partial class frmVistaCandidatas : Form
     {
         CN_Candidata obj_candidatas = new CN_Candidata();
         CN_Fotos obj_fotos = new CN_Fotos();
         private VScrollBar vScrollBar1;
-        public frmVisitaCandidatas()
+        public frmVistaCandidatas()
         {
             InitializeComponent();
             centrarFormulario();

@@ -106,9 +106,9 @@
             lblVisitaCandidatas.AutoSize = true;
             lblVisitaCandidatas.Location = new Point(203, 291);
             lblVisitaCandidatas.Name = "lblVisitaCandidatas";
-            lblVisitaCandidatas.Size = new Size(172, 25);
+            lblVisitaCandidatas.Size = new Size(168, 25);
             lblVisitaCandidatas.TabIndex = 6;
-            lblVisitaCandidatas.Text = "Visita de Candidatas";
+            lblVisitaCandidatas.Text = "Vista de Candidatas";
             // 
             // lblAddCandidatas
             // 

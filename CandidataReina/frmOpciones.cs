@@ -142,7 +142,7 @@ namespace CapaVisual
 
         private void btnVisitCandidatas_Click(object sender, EventArgs e)
         {
-            frmVisitaCandidatas pantallaVisitaCandidata = new frmVisitaCandidatas();
+            frmVistaCandidatas pantallaVisitaCandidata = new frmVistaCandidatas();
             pantallaVisitaCandidata.Show();
         }
 
