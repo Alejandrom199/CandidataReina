@@ -1,6 +1,6 @@
 ﻿namespace CapaVisual
 {
-    partial class frmCandidatasCrud
+    partial class frmCandidatas
     {
         /// <summary>
         /// Required designer variable.

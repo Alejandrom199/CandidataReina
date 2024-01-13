@@ -13,11 +13,11 @@ using CapaNegocio.Entidades;
 
 namespace CapaVisual
 {
-    public partial class frmCandidatasCrud : Form
+    public partial class frmCandidatas : Form
     {
         CN_Candidatas obj_capa_negocio = new CN_Candidatas();
 
-        public frmCandidatasCrud()
+        public frmCandidatas()
         {
             InitializeComponent();
             btnCancelar.Enabled = true;

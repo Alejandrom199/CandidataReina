@@ -107,7 +107,7 @@ namespace CapaVisual
 
         private void btnAddCandidata_Click(object sender, EventArgs e)
         {
-            frmCandidatasCrud frmCandidatas = new frmCandidatasCrud();
+            frmCandidatas frmCandidatas = new frmCandidatas();
             frmCandidatas.Show();
         }
 
