@@ -121,6 +121,7 @@
             linkLabel1.TabIndex = 8;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Olvide mi contraseña";
+            linkLabel1.Visible = false;
             // 
             // panel2
             // 

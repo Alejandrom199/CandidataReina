@@ -68,6 +68,7 @@
             btnConsResultados.TabIndex = 3;
             btnConsResultados.Text = "Consultar Resultados";
             btnConsResultados.UseVisualStyleBackColor = true;
+            btnConsResultados.Click += btnConsResultados_Click;
             // 
             // btnVisitCandidatas
             // 

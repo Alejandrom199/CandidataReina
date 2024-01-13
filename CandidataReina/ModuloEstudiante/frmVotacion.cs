@@ -1,4 +1,5 @@
-﻿using CapaNegocio.Entidades;
+﻿using CapaNegocio;
+using CapaNegocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,10 @@ namespace CapaVisual.ModuloEstudiante
     public partial class frmVotacion : Form
     {
         CN_Candidatas obj_candidata = new CN_Candidatas();
+        CN_Usuario obj_usuario = new CN_Usuario();
+
+        CN_Voto obj_voto = new CN_Voto();
+        private string cedula;
         public frmVotacion()
         {
             InitializeComponent();
@@ -24,8 +29,14 @@ namespace CapaVisual.ModuloEstudiante
             InitCampos();
         }
 
+        public string Cedula
+        {
+            get { return cedula; }
+            set { cedula = value; }
+        }
         private void InitCampos()
         {
+
             tbxNombre.ReadOnly = true;
             tbxApellidos.ReadOnly = true;
             tbxCarrera.ReadOnly = true;
@@ -67,19 +78,17 @@ namespace CapaVisual.ModuloEstudiante
                     }
                     else
                     {
-                        // Si la imagen está vacía, podrías establecer un valor predeterminado o dejar el PictureBox vacío.
                         pbxFotoCandidata.Image = null;
                     }
                 }
                 else
                 {
-                    // No se encontraron resultados para el id proporcionado.
-                    MessageBox.Show("No se encontraron datos para el id proporcionado.");
+                    MessageBox.Show("No se encontraron datos para el ID proporcionado.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al buscar datos: " + ex.Message);
+                MessageBox.Show("Ingrese el ID de la candidata");
             }
         }
 
@@ -94,6 +103,39 @@ namespace CapaVisual.ModuloEstudiante
             else if (carrera == "2") { return "SOFTWARE"; }
             else if (carrera == "3") { return "TICS"; }
             else { return "NULL"; }
+        }
+
+        private void btnVotar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombre = tbxNombre.Text;
+                string apellido = tbxApellidos.Text;
+
+                bool yaVoto = obj_usuario.ObtenerEstadoVotacion(Cedula);
+
+                if (!yaVoto)
+                {
+                    bool resultadoVoto = obj_usuario.Votar(nombre, apellido, Cedula);
+
+                    if (resultadoVoto)
+                    {
+                        MessageBox.Show("Voto registrado con éxito.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo registrar el voto.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Este usuario ya ha votado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
     }
 }

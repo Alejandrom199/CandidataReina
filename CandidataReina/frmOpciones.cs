@@ -13,31 +13,40 @@ using System.Windows.Forms;
 using CapaVisual;
 using CapaVisual.ModuloDocente;
 using CapaVisual.ModuloEstudiante;
+using CapaNegocio.Entidades;
 
 namespace CapaVisual
 {
     public partial class frmOpciones : Form
     {
-        private string recibeUsername;
+
+        private string id_rol;
+        private string cedula;
         public frmOpciones()
         {
             InitializeComponent();
             centrarFormulario();
-            lblUsuario.Text = "Hola " + recibeUsername + "!!";
             MaximizeBox = false;
             FormClosed += frmOpciones_FormClosed;
-        }
 
-        public string RecibeUsername
+        }
+        public string Cedula
         {
-            get { return lblUsuario.Text; }
-            set { lblUsuario.Text = value; }
+            get { return cedula; }
+            set { cedula = value; }
+        }
+        public string Id_Rol
+        {
+            get { return id_rol; }
+            set { id_rol = value; }
         }
 
         public void centrarFormulario()
         {
             StartPosition = FormStartPosition.Manual;
+
             Location = new Point(
+
                 (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
                 (Screen.PrimaryScreen.Bounds.Height - Height) / 2
             );
@@ -45,17 +54,15 @@ namespace CapaVisual
 
         private void FormGestor_Load(object sender, EventArgs e)
         {
-            frmLogin formLogin = new frmLogin();
-            string rolUser = formLogin.RolUser.ToString();
-            mostrarOpciones(rolUser);
-
+            mostrarOpciones(Id_Rol);
+            lblUsuario.Text = "Usuario: " + Cedula;
         }
 
         public void mostrarOpciones(string rol)
         {
             try
             {
-                if (rol == "Estudiante")
+                if (rol == "1")
                 {
                     btnVisitCandidatas.Visible = true;
                     btnVotaciones.Visible = true;
@@ -70,7 +77,7 @@ namespace CapaVisual
                     lblGaleria.Visible = false;
                 }
 
-                else if (rol == "Gestor")
+                else if (rol == "2")
                 {
                     btnVisitCandidatas.Visible = false;
                     btnVotaciones.Visible = false;
@@ -98,10 +105,7 @@ namespace CapaVisual
                     lblConsulResultados.Visible = true;
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch (Exception ex) { }
 
         }
 
@@ -111,16 +115,6 @@ namespace CapaVisual
             frmCandidatas.Show();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas cerrar la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-
         private void frmOpciones_FormClosed(object sender, FormClosedEventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas cerrar la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -128,6 +122,10 @@ namespace CapaVisual
             if (resultado == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+            else if (resultado == DialogResult.No)
+            {
+
             }
         }
 
@@ -140,6 +138,7 @@ namespace CapaVisual
         private void btnVotaciones_Click(object sender, EventArgs e)
         {
             frmVotacion pantallaVotaciones = new frmVotacion();
+            pantallaVotaciones.Cedula = Cedula;
             pantallaVotaciones.Show();
         }
 
@@ -147,6 +146,12 @@ namespace CapaVisual
         {
             frmVisitaCandidatas pantallaVisitaCandidata = new frmVisitaCandidatas();
             pantallaVisitaCandidata.Show();
+        }
+
+        private void btnConsResultados_Click(object sender, EventArgs e)
+        {
+            frmConsultaResultados pantallaConsultar = new frmConsultaResultados();
+            pantallaConsultar.Show();
         }
     }
 }

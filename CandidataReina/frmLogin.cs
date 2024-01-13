@@ -1,14 +1,16 @@
+using CapaDatos;
 using CapaNegocio;
+using CapaNegocio.Entidades;
 using CapaVisual;
+using CapaVisual.ModuloEstudiante;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CandidataReina
 {
     public partial class frmLogin : Form
     {
-        private ObtenerUsuario objUsuario = new ObtenerUsuario();
-        private string username;
-        private string clave;
+        CN_Usuario obj_usuario = new CN_Usuario();
+        
         public bool flagVerClave;
         public frmLogin()
         {
@@ -22,32 +24,34 @@ namespace CandidataReina
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            username = tbxUsername.Text;
-            clave = tbxClave.Text;
+            CN_Usuario user = new CN_Usuario();
+            user.Username = tbxUsername.Text;
+            user.Clave = tbxClave.Text;
 
-            if (objUsuario.ValidarCredenciales(username, clave))
+            if (obj_usuario.ValidarUsuario(user))
             {
-                MessageBox.Show("Inicio de sesión exitoso de " + username);
+                // Ahora que has validado el usuario, asigna el nombre de usuario al objeto obj_usuario
+                obj_usuario.Username = user.Username;
 
-                CN_Usuario user = objUsuario.retornarCredencialesUser(username, clave);
+                // Llama al método ObtenerCedulaPorUsuario y muestra la cédula
+                string cedula = obj_usuario.ObtenerCedulaPorUsuario(obj_usuario);
+                string rol = obj_usuario.ObtenerRolPorUsuario(obj_usuario);
 
-                /*if (user != null)
+                if (cedula != null || rol != null)
                 {
-                    MessageBox.Show("nombre: " + user.Nombres + "\n" +
-                                    "username: " + user.Username + "\n" +
-                                    "clave: " + user.Clave + "\n" +
-                                    "Email: " + user.Email + "\n" +
-                                    "estado: " + user.Estado.ToString() + "\n" +
-                                    "Rol: " + user.PerfilUsuario.ToString());
+                    // Continúa con el flujo de tu aplicación
+                    frmOpciones pantallaOpciones = new frmOpciones();
+                    pantallaOpciones.Cedula = cedula;
+                    pantallaOpciones.Id_Rol = rol;
+
+
+                    pantallaOpciones.Show();
+                    Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario nulo.");
-                }*/
-
-                MandarUsuario(user);
-
-                Hide();
+                    MessageBox.Show("No se pudo obtener la cédula del usuario.");
+                }
             }
             else
             {
@@ -62,19 +66,6 @@ namespace CandidataReina
                 (Screen.PrimaryScreen.Bounds.Width - Width) / 2,
                 (Screen.PrimaryScreen.Bounds.Height - Height) / 2
             );
-        }
-
-        private static string rolUser;
-        public void MandarUsuario(CN_Usuario user)
-        {
-            frmOpciones frmOpciones = new frmOpciones();
-            rolUser = MostrarRol(user);
-
-            frmOpciones.RecibeUsername = "Hola " + user.Nombres + "!!\n"
-                                        + "User: " + user.Username + "\n"
-                                        + "Rol: " + rolUser;
-            frmOpciones.Show();
-
         }
 
         public string MostrarRol(CN_Usuario user)
@@ -95,11 +86,6 @@ namespace CandidataReina
                 tbxClave.PasswordChar = '*';
                 flagVerClave = true;
             }
-        }
-
-        public string RolUser
-        {
-            get { return rolUser; }
         }
     }
 }

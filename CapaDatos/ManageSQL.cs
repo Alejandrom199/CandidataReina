@@ -1,4 +1,4 @@
-﻿using CapaNegocio;
+﻿
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -46,75 +46,6 @@ namespace CapaDatos
             }
         }
 
-
-        public CN_Usuario retornarUserObjecto(string username, string clave)
-        {
-            string sql = "SELECT * FROM tb_Usuarios WHERE username = @Username AND clave = @Clave ";
-            try
-            {
-                var command = new SqlCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = sql;
-
-                command.Parameters.AddWithValue("@Username", username);
-                command.Parameters.AddWithValue("@Clave", clave);
-
-                command.Connection = conn.AbrirConexion();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    CN_Usuario user = new CN_Usuario
-                    {
-                        Nombres = reader["nombre"].ToString(),
-                        Username = reader["username"].ToString(),
-                        Clave = reader["clave"].ToString(),
-                        Email = reader["mail"].ToString(),
-                        Estado = Convert.ToBoolean(reader["estado"]),
-                        PerfilUsuario = reader["id_rol"].ToString()
-                    };
-                    return user;
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-            finally
-            {
-                conn.CerrarConexion();
-            }
-        }
-
-
-        public bool ValidarCredenciales(string username, string clave)
-        {
-            string sql = "SELECT COUNT(*) FROM tb_Usuarios WHERE username = @Username AND clave = @Clave ";
-            try
-            {
-                var command = new SqlCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = sql;
-
-                command.Parameters.AddWithValue("@Username", username);
-                command.Parameters.AddWithValue("@Clave", clave);
-
-                command.Connection = conn.AbrirConexion();
-                int count = (int)command.ExecuteScalar();
-
-                conn.CerrarConexion();
-
-                // Devolver true si se encontró al menos una fila
-                return count > 0;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
         public DataTable EjecutarSelect(string sql)
         {
 
@@ -157,6 +88,27 @@ namespace CapaDatos
             }
         }
 
+        public object EjecutarSPSelectScalar(string storedProcedureName, SqlParameter[] parameters)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            command.Connection = conn.AbrirConexion();
+
+            // Utiliza ExecuteScalar para obtener un solo valor
+            object result = command.ExecuteScalar();
+
+            conn.CerrarConexion();
+
+            return result;
+        }
+
         public DataTable EjecutarSPSelect(string storedProcedureName, SqlParameter[] parameters)
         {
             var command = new SqlCommand();
@@ -178,5 +130,132 @@ namespace CapaDatos
                 return tabla;
             }
         }
+
+
+        public bool EjecutarSPValidarCredenciales(string storedProcedureName, SqlParameter[] parameters)
+        {
+            try
+            {
+                var command = new SqlCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = storedProcedureName;
+
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                command.Connection = conn.AbrirConexion();
+                int count = (int)command.ExecuteScalar();
+
+                conn.CerrarConexion();
+
+                // Devolver true si se encontró al menos una fila
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public string ObtenerDatoPorUsuario(string storedProcedureName, SqlParameter[] parameters, string tipoDato)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            command.Connection = conn.AbrirConexion();
+            SqlDataReader reader = command.ExecuteReader();
+
+            string dato = null;
+
+            if (reader.Read())
+            {
+                // Asumiendo que la columna en la base de datos es de tipo VARCHAR
+                dato = reader[tipoDato].ToString();
+            }
+
+            reader.Dispose();
+            conn.CerrarConexion();
+
+            return dato;
+        }
+
+        public bool CrearVoto(string storedProcedureName, SqlParameter[] parameters)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            command.Connection = conn.AbrirConexion();
+
+            try
+            {
+                // Ejecutar el stored procedure para crear un voto
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Manejar excepciones, mostrar mensaje o registrar en un log según sea necesario
+                Console.WriteLine($"Error al crear el voto: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                conn.CerrarConexion();
+            }
+        }
+
+        public bool ObtenerEstadoVotacion(string storedProcedureName, SqlParameter[] parameters)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            command.Connection = conn.AbrirConexion();
+            SqlDataReader reader = command.ExecuteReader();
+
+            bool dato = false;
+
+            try
+            {
+                if (reader.Read())
+                {
+                    // Asumiendo que la columna en la base de datos es de tipo BIT
+                    dato = reader.GetBoolean(reader.GetOrdinal("isVoto"));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar excepciones, mostrar mensaje o registrar en un log según sea necesario
+                Console.WriteLine($"Error al obtener el estado de votación: {ex.Message}");
+            }
+            finally
+            {
+                reader.Dispose();
+                conn.CerrarConexion();
+            }
+
+            return dato;
+        }
+
+
     }
 }

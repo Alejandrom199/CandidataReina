@@ -91,6 +91,7 @@
             btnVotar.TabIndex = 3;
             btnVotar.Text = "votar";
             btnVotar.UseVisualStyleBackColor = true;
+            btnVotar.Click += btnVotar_Click;
             // 
             // tbxPasatiempos
             // 

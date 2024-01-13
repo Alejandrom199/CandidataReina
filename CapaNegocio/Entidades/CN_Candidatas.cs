@@ -254,7 +254,7 @@ namespace CapaNegocio.Entidades
 
                 SqlParameter[] parametros = new SqlParameter[]
                 {
-             new SqlParameter("@id", candidata.id)
+                     new SqlParameter("@id", candidata.id)
                 };
 
                 DataTable dataTable = obj_capa_datos.EjecutarSPSelect(nombreStoredProcedure, parametros);
