@@ -61,6 +61,7 @@
             // 
             btnAddCandidata.BackgroundImage = (Image)resources.GetObject("btnAddCandidata.BackgroundImage");
             btnAddCandidata.BackgroundImageLayout = ImageLayout.Stretch;
+            btnAddCandidata.Cursor = Cursors.Hand;
             btnAddCandidata.Location = new Point(182, 163);
             btnAddCandidata.Name = "btnAddCandidata";
             btnAddCandidata.Size = new Size(120, 120);
@@ -72,6 +73,7 @@
             // 
             btnConsResultados.BackgroundImage = (Image)resources.GetObject("btnConsResultados.BackgroundImage");
             btnConsResultados.BackgroundImageLayout = ImageLayout.Stretch;
+            btnConsResultados.Cursor = Cursors.Hand;
             btnConsResultados.Location = new Point(506, 163);
             btnConsResultados.Name = "btnConsResultados";
             btnConsResultados.Size = new Size(120, 120);
@@ -83,6 +85,7 @@
             // 
             btnVisitCandidatas.BackgroundImage = (Image)resources.GetObject("btnVisitCandidatas.BackgroundImage");
             btnVisitCandidatas.BackgroundImageLayout = ImageLayout.Stretch;
+            btnVisitCandidatas.Cursor = Cursors.Hand;
             btnVisitCandidatas.Location = new Point(226, 163);
             btnVisitCandidatas.Name = "btnVisitCandidatas";
             btnVisitCandidatas.Size = new Size(120, 120);
@@ -94,6 +97,7 @@
             // 
             btnVotaciones.BackgroundImage = (Image)resources.GetObject("btnVotaciones.BackgroundImage");
             btnVotaciones.BackgroundImageLayout = ImageLayout.Stretch;
+            btnVotaciones.Cursor = Cursors.Hand;
             btnVotaciones.Location = new Point(448, 163);
             btnVotaciones.Name = "btnVotaciones";
             btnVotaciones.Size = new Size(120, 120);
@@ -141,6 +145,7 @@
             // 
             btnGaleria.BackgroundImage = (Image)resources.GetObject("btnGaleria.BackgroundImage");
             btnGaleria.BackgroundImageLayout = ImageLayout.Stretch;
+            btnGaleria.Cursor = Cursors.Hand;
             btnGaleria.Location = new Point(342, 163);
             btnGaleria.Name = "btnGaleria";
             btnGaleria.Size = new Size(120, 120);
@@ -174,9 +179,10 @@
             // 
             btnSalir.BackgroundImage = (Image)resources.GetObject("btnSalir.BackgroundImage");
             btnSalir.BackgroundImageLayout = ImageLayout.Stretch;
-            btnSalir.Location = new Point(733, 12);
+            btnSalir.Cursor = Cursors.Hand;
+            btnSalir.Location = new Point(757, 3);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(55, 55);
+            btnSalir.Size = new Size(40, 40);
             btnSalir.TabIndex = 2;
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;

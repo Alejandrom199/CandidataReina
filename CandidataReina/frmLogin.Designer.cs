@@ -36,9 +36,9 @@
             tbxClave = new TextBox();
             btnVerClave = new Button();
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             btnMinimizar = new Button();
             btnSalir = new Button();
-            pictureBox1 = new PictureBox();
             label3 = new Label();
             panel2 = new Panel();
             panel1.SuspendLayout();
@@ -49,8 +49,10 @@
             // btnLogin
             // 
             btnLogin.BackColor = SystemColors.Highlight;
+            btnLogin.Cursor = Cursors.Hand;
+            btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.ForeColor = SystemColors.ControlLightLight;
-            btnLogin.Location = new Point(180, 305);
+            btnLogin.Location = new Point(175, 314);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(110, 40);
             btnLogin.TabIndex = 0;
@@ -61,7 +63,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(86, 114);
+            label1.Location = new Point(82, 133);
             label1.Name = "label1";
             label1.Size = new Size(95, 25);
             label1.TabIndex = 1;
@@ -70,7 +72,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(123, 207);
+            label2.Location = new Point(119, 216);
             label2.Name = "label2";
             label2.Size = new Size(58, 25);
             label2.TabIndex = 2;
@@ -78,14 +80,14 @@
             // 
             // tbxUsername
             // 
-            tbxUsername.Location = new Point(187, 114);
+            tbxUsername.Location = new Point(183, 130);
             tbxUsername.Name = "tbxUsername";
             tbxUsername.Size = new Size(178, 31);
             tbxUsername.TabIndex = 3;
             // 
             // tbxClave
             // 
-            tbxClave.Location = new Point(187, 207);
+            tbxClave.Location = new Point(183, 213);
             tbxClave.Name = "tbxClave";
             tbxClave.Size = new Size(150, 31);
             tbxClave.TabIndex = 4;
@@ -94,16 +96,17 @@
             // 
             btnVerClave.BackgroundImage = (Image)resources.GetObject("btnVerClave.BackgroundImage");
             btnVerClave.BackgroundImageLayout = ImageLayout.Stretch;
-            btnVerClave.Location = new Point(331, 205);
+            btnVerClave.Location = new Point(330, 213);
             btnVerClave.Name = "btnVerClave";
-            btnVerClave.Size = new Size(34, 34);
+            btnVerClave.Size = new Size(31, 31);
             btnVerClave.TabIndex = 5;
             btnVerClave.UseVisualStyleBackColor = true;
             btnVerClave.Click += btnVerClave_Click;
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.BackColor = Color.LightCyan;
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
@@ -111,14 +114,26 @@
             panel1.Size = new Size(357, 451);
             panel1.TabIndex = 6;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(99, 130);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(150, 150);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // btnMinimizar
             // 
             btnMinimizar.BackColor = SystemColors.ControlLightLight;
             btnMinimizar.BackgroundImage = (Image)resources.GetObject("btnMinimizar.BackgroundImage");
             btnMinimizar.BackgroundImageLayout = ImageLayout.Stretch;
-            btnMinimizar.Location = new Point(404, 391);
+            btnMinimizar.Cursor = Cursors.Hand;
+            btnMinimizar.Location = new Point(420, 408);
             btnMinimizar.Name = "btnMinimizar";
-            btnMinimizar.Size = new Size(55, 55);
+            btnMinimizar.Size = new Size(40, 40);
             btnMinimizar.TabIndex = 9;
             btnMinimizar.UseVisualStyleBackColor = false;
             btnMinimizar.Click += btnMinimizar_Click;
@@ -128,33 +143,24 @@
             btnSalir.BackColor = SystemColors.ControlLightLight;
             btnSalir.BackgroundImage = (Image)resources.GetObject("btnSalir.BackgroundImage");
             btnSalir.BackgroundImageLayout = ImageLayout.Stretch;
-            btnSalir.Location = new Point(343, 391);
+            btnSalir.Cursor = Cursors.Hand;
+            btnSalir.Location = new Point(377, 408);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(55, 55);
+            btnSalir.Size = new Size(40, 40);
             btnSalir.TabIndex = 8;
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(99, 130);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(150, 150);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.Highlight;
-            label3.Location = new Point(180, 38);
+            label3.Location = new Point(119, 41);
             label3.Name = "label3";
-            label3.Size = new Size(107, 35);
+            label3.Size = new Size(220, 35);
             label3.TabIndex = 7;
-            label3.Text = "LOGIN";
+            label3.Text = "Inicio de sesión";
             // 
             // panel2
             // 

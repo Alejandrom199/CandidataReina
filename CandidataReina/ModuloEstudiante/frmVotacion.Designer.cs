@@ -53,6 +53,7 @@
             btnCancelar = new Button();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pbxFotoCandidata).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pbxFotoCandidata
@@ -78,7 +79,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(430, 24);
+            label1.Location = new Point(430, 28);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(280, 25);
@@ -87,13 +88,17 @@
             // 
             // btnVotar
             // 
-            btnVotar.Location = new Point(105, 487);
+            btnVotar.BackColor = Color.PaleTurquoise;
+            btnVotar.BackgroundImage = (Image)resources.GetObject("btnVotar.BackgroundImage");
+            btnVotar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnVotar.Cursor = Cursors.Hand;
+            btnVotar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnVotar.Location = new Point(149, 482);
             btnVotar.Margin = new Padding(4);
             btnVotar.Name = "btnVotar";
-            btnVotar.Size = new Size(200, 60);
+            btnVotar.Size = new Size(117, 69);
             btnVotar.TabIndex = 3;
-            btnVotar.Text = "votar";
-            btnVotar.UseVisualStyleBackColor = true;
+            btnVotar.UseVisualStyleBackColor = false;
             btnVotar.Click += btnVotar_Click;
             // 
             // tbxPasatiempos
@@ -108,7 +113,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(430, 81);
+            label2.Location = new Point(430, 80);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(79, 25);
@@ -118,7 +123,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(430, 125);
+            label3.Location = new Point(430, 124);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(90, 25);
@@ -144,7 +149,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(818, 81);
+            label12.Location = new Point(818, 80);
             label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
             label12.Size = new Size(72, 25);
@@ -162,7 +167,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(818, 125);
+            label4.Location = new Point(834, 127);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(56, 25);
@@ -171,7 +176,7 @@
             // 
             // tbxEdad
             // 
-            tbxEdad.Location = new Point(898, 125);
+            tbxEdad.Location = new Point(898, 123);
             tbxEdad.Margin = new Padding(2);
             tbxEdad.Name = "tbxEdad";
             tbxEdad.Size = new Size(86, 31);
@@ -268,6 +273,8 @@
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(btnVotar);
+            panel1.Controls.Add(label4);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -289,7 +296,6 @@
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(tbxEdad);
-            Controls.Add(label4);
             Controls.Add(tbxCarrera);
             Controls.Add(label12);
             Controls.Add(tbxApellidos);
@@ -297,7 +303,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(tbxPasatiempos);
-            Controls.Add(btnVotar);
             Controls.Add(label1);
             Controls.Add(tbxId);
             Controls.Add(pbxFotoCandidata);
@@ -309,6 +314,8 @@
             Text = "frmVotacion";
             Load += frmVotacion_Load;
             ((System.ComponentModel.ISupportInitialize)pbxFotoCandidata).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
