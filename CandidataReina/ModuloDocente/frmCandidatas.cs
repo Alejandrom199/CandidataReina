@@ -340,22 +340,25 @@ namespace CapaVisual
         {
             obj_cn_candidatas.Id = Convert.ToInt16(tbxId.Text);
 
-            if (obj_cn_candidatas.EliminarCandidata(obj_cn_candidatas))
+            try
             {
-                MessageBox.Show("Registro eliminado!");
-                CargarGridCandidatas();
+                if (obj_cn_candidatas.EliminarCandidata(obj_cn_candidatas))
+                {
+                    MessageBox.Show("Registro eliminado!");
+                    CargarGridCandidatas();
 
-                btnNuevo.Enabled = true;
-                btnAgregar.Enabled = false;
-                btnModificar.Enabled = false;
-                btnEliminar.Enabled = false;
+                    btnNuevo.Enabled = true;
+                    btnAgregar.Enabled = false;
+                    btnModificar.Enabled = false;
+                    btnEliminar.Enabled = false;
 
-                DisableCampos(true);
-            }
-            else
-            {
-                MessageBox.Show("Registro no pudo ser eliminado!");
-            }
+                    DisableCampos(true);
+                }
+                else
+                {
+                    MessageBox.Show("Registro no pudo ser eliminado!");
+                }
+            }catch(Exception ex) { MessageBox.Show("Primero debes eliminar las fotografias de la candidata"); }
 
         }
 
