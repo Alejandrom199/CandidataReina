@@ -32,13 +32,13 @@ namespace CapaNegocio.Entidades
 
         public CN_Usuario(string cedula, string nombres, string username, string clave, string email, bool estado, string perfilUsuario)
         {
-            cedula = cedula;
-            nombres = nombres;
-            username = username;
-            email = email;
-            clave = clave;
-            estado = estado;
-            perfilUsuario = perfilUsuario;
+            this.cedula = cedula;
+            this.nombres = nombres;
+            this.username = username;
+            this.email = email;
+            this.clave = clave;
+            this.estado = estado;
+            this.perfilUsuario = perfilUsuario;
         }
 
         public string Cedula

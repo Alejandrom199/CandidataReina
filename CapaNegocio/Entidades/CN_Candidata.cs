@@ -6,12 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CapaDatos.Interfaces;
 
 namespace CapaNegocio.Entidades
 {
     public class CN_Candidata
     {
-        private ManageSQL obj_capa_datos = new ManageSQL();
+        private ICandidata obj_interface_candidata = new ICandidata();
 
         private int id;
         private string nombre, apellidos;
@@ -128,14 +129,15 @@ namespace CapaNegocio.Entidades
             Console.WriteLine("entro al lista Candidatas");
             try
             {
-                string nombreStoredProcedure = "SP_OBTENER_CANDIDATA";
-                return obj_capa_datos.EjecutarSPSelect(nombreStoredProcedure, null);
+                //De está manera la lógica disminuye en capa Negocio
+                return obj_interface_candidata.GetListaCandidata();
             }
             catch (Exception e)
             {
                 throw new Exception("Error al obtener listado de Candidatas." + e.Message);
             }
         }
+
 
         /**
          * Método para realizar una inserción de una candidata
@@ -144,25 +146,7 @@ namespace CapaNegocio.Entidades
         {
             try
             {
-                string nombreStoredProcedure = "SP_CREATE_CANDIDATA";
-
-                SqlParameter[] parametros = new SqlParameter[]
-                {
-                    new SqlParameter("@nombre", candidata.Nombre),
-                    new SqlParameter("@apellidos", candidata.Apellidos),
-                    new SqlParameter("@edad", candidata.Edad),
-                    new SqlParameter("@telefono", candidata.Telefono),
-                    new SqlParameter("@provincia", candidata.Provincia),
-                    new SqlParameter("@pasatiempos", candidata.Pasatiempos),
-                    new SqlParameter("@habilidades", candidata.Habilidades),
-                    new SqlParameter("@intereses", candidata.Intereses),
-                    new SqlParameter("@aspiraciones", candidata.Aspiraciones),
-                    new SqlParameter("@semestre", candidata.Semestre),
-                    new SqlParameter("@id_carrera", candidata.Id_Carrera),
-                    new SqlParameter("@imagen", candidata.ImagenByte),
-                };
-
-                return obj_capa_datos.EjecutarSPSql(nombreStoredProcedure, parametros);
+                return obj_interface_candidata.CrearCandidata(candidata.nombre, candidata.apellidos, candidata.edad, candidata.telefono, candidata.provincia, candidata.pasatiempos, candidata.habilidades, candidata.intereses, candidata.aspiraciones, candidata.semestre, candidata.id_Carrera, candidata.imagenBytes);
             }
             catch (Exception e)
             {
@@ -177,26 +161,7 @@ namespace CapaNegocio.Entidades
         {
             try
             {
-                string nombreStoredProcedure = "SP_MODIFICAR_CANDIDATA";
-
-                SqlParameter[] parametros = new SqlParameter[]
-                {
-                    new SqlParameter("@id", candidata.Id),
-                    new SqlParameter("@nombre", candidata.Nombre),
-                    new SqlParameter("@apellidos", candidata.Apellidos),
-                    new SqlParameter("@edad", candidata.Edad),
-                    new SqlParameter("@telefono", candidata.Telefono),
-                    new SqlParameter("@provincia", candidata.Provincia),
-                    new SqlParameter("@pasatiempos", candidata.Pasatiempos),
-                    new SqlParameter("@habilidades", candidata.Habilidades),
-                    new SqlParameter("@intereses", candidata.Intereses),
-                    new SqlParameter("@aspiraciones", candidata.Aspiraciones),
-                    new SqlParameter("@semestre", candidata.Semestre),
-                    new SqlParameter("@id_carrera", candidata.Id_Carrera),
-                    new SqlParameter("@imagen", candidata.ImagenByte),
-                };
-
-                return obj_capa_datos.EjecutarSPSql(nombreStoredProcedure, parametros);
+                return obj_interface_candidata.ModificarCandidata(candidata.id, candidata.nombre, candidata.apellidos, candidata.edad, candidata.telefono, candidata.provincia, candidata.pasatiempos, candidata.habilidades, candidata.intereses, candidata.aspiraciones, candidata.semestre, candidata.id_Carrera, candidata.imagenBytes);
             }
             catch (Exception e)
             {
@@ -211,14 +176,7 @@ namespace CapaNegocio.Entidades
         {
             try
             {
-                string nombreStoredProcedure = "SP_ELIMINAR_CANDIDATA";
-
-                SqlParameter[] parametros = new SqlParameter[]
-                {
-                    new SqlParameter("@id", candidata.Id),
-                };
-
-                return obj_capa_datos.EjecutarSPSql(nombreStoredProcedure, parametros);
+                return obj_interface_candidata.EliminarCandidata(candidata.id);
             }
             catch (Exception e)
             {
@@ -233,24 +191,7 @@ namespace CapaNegocio.Entidades
         {
             try
             {
-                string nombreStoredProcedure = "SP_GET_CANDIDATA_BY_ID";
-
-                SqlParameter[] parametros = new SqlParameter[]
-                {
-                     new SqlParameter("@id", candidata.id)
-                };
-
-                DataTable dataTable = obj_capa_datos.EjecutarSPSelect(nombreStoredProcedure, parametros);
-
-                if (dataTable.Rows.Count > 0)
-                {
-                    // Devolver la primera fila que contiene los datos de la candidata
-                    return dataTable.Rows[0];
-                }
-                else
-                {
-                    return null;
-                }
+                return obj_interface_candidata.getCandidataById(candidata.id);
             }
             catch (Exception ex)
             {
@@ -258,28 +199,14 @@ namespace CapaNegocio.Entidades
             }
         }
 
+        /**
+         * Método para obtener todos los datos una candidata mediante un ID
+         **/
         public DataRow getAllCandidataById(CN_Candidata candidata)
         {
             try
             {
-                string nombreStoredProcedure = "SP_GET_ALL_CANDIDATA_BY_ID";
-
-                SqlParameter[] parametros = new SqlParameter[]
-                {
-                    new SqlParameter("@id", candidata.id)
-                };
-
-                DataTable dataTable = obj_capa_datos.EjecutarSPSelect(nombreStoredProcedure, parametros);
-
-                if (dataTable.Rows.Count > 0)
-                {
-                    // Devolver la primera fila que contiene los datos de la candidata
-                    return dataTable.Rows[0];
-                }
-                else
-                {
-                    return null;
-                }
+                return obj_interface_candidata.getAllCandidataById(candidata.id);
             }
             catch (Exception ex)
             {

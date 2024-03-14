@@ -16,7 +16,6 @@ namespace CapaVisual.ModuloEstudiante
     {
         CN_Candidata obj_candidatas = new CN_Candidata();
         CN_Fotos obj_fotos = new CN_Fotos();
-        private VScrollBar vScrollBar1;
         public frmVistaCandidatas()
         {
             InitializeComponent();

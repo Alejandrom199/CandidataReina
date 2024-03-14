@@ -100,7 +100,7 @@ namespace CapaNegocio.Entidades
 
                 return obj_capa_datos.EjecutarSQL(sql, parameters);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 return false;
             }
