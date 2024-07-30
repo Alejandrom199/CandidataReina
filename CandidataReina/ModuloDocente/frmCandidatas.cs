@@ -15,7 +15,8 @@ namespace CapaVisual
 {
     public partial class frmCandidatas : Form
     {
-        CN_Candidata obj_capa_negocio = new CN_Candidata();
+        CN_Candidata obj_capa_negocio = new CN_Candidata(); 
+
 
         public frmCandidatas()
         {

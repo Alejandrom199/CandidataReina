@@ -10,7 +10,7 @@ namespace CapaDatos
     public class ConnectionDB
     {
         //Data Source=ALEJANDRO-PC;Initial Catalog=REINA_FACULTAD;Integrated Security=True;Trust Server Certificate=True
-        private SqlConnection cadena_conexion = new SqlConnection("Data Source=ALEJANDRO-PC;Initial Catalog=REINA_FACULTAD;Integrated Security=True;Trust Server Certificate=True");
+        private SqlConnection cadena_conexion = new SqlConnection("Data Source=ALEJANDRO-PC;Initial Catalog=NuevoCamioncitosSA;Integrated Security=True;Trust Server Certificate=True");
         //"server=ALEJANDRO-PC; database=REINA_FACULTAD; User ID=sa; Password=sa;TrustServerCertificate=true"
         public SqlConnection AbrirConexion()
         {
